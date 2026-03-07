@@ -176,130 +176,137 @@ function initCardGlow() {
 // GSAP ANIMATIONS
 // ═══════════════════════════════════════════════════════════
 
+let gsapCtx;
+
 function initGSAP() {
     if (!window.gsap || !window.ScrollTrigger) return;
     gsap.registerPlugin(ScrollTrigger);
+
+    // Revert previous instance if hot-reloaded
+    if (gsapCtx) gsapCtx.revert();
 
     // Refresh ScrollTrigger periodically 
     setTimeout(() => ScrollTrigger.refresh(), 1000);
     setTimeout(() => ScrollTrigger.refresh(), 3000);
 
-    // ── Hero entrance ─────────────────────────────────────
-    const heroTl = gsap.timeline({ defaults: { ease: 'power4.out', duration: 1 } });
-    heroTl
-        .from('.hero-tag', { y: 30, opacity: 0 })
-        .from('.line-1', { y: 80, opacity: 0, skewY: 4 }, '-=0.7')
-        .from('.line-2', { y: 80, opacity: 0, skewY: 4 }, '-=0.8')
-        .from('.hero-role', { y: 20, opacity: 0 }, '-=0.6')
-        .from('.hero-bio', { y: 20, opacity: 0 }, '-=0.7')
-        .from('.hero-actions', { y: 20, opacity: 0 }, '-=0.7')
-        .from('.metric', { y: 30, opacity: 0, stagger: 0.12 }, '-=0.5')
-        .from('.scroll-cue', { opacity: 0 }, '-=0.3');
+    gsapCtx = gsap.context(() => {
+        // ── Hero entrance ─────────────────────────────────────
+        const heroTl = gsap.timeline({ defaults: { ease: 'power4.out', duration: 1 } });
+        heroTl
+            .from('.hero-tag', { y: 30, opacity: 0 })
+            .from('.line-1', { y: 80, opacity: 0, skewY: 4 }, '-=0.7')
+            .from('.line-2', { y: 80, opacity: 0, skewY: 4 }, '-=0.8')
+            .from('.hero-role', { y: 20, opacity: 0 }, '-=0.6')
+            .from('.hero-bio', { y: 20, opacity: 0 }, '-=0.7')
+            .from('.hero-actions', { y: 20, opacity: 0 }, '-=0.7')
+            .from('.metric', { y: 30, opacity: 0, stagger: 0.12 }, '-=0.5')
+            .from('.scroll-cue', { opacity: 0 }, '-=0.3');
 
-    // ── Hero parallax on scroll ───────────────────────────
-    gsap.to('.hero-body', {
-        scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 1.2 },
-        y: -100, opacity: 0.3,
-    });
-    gsap.to('.hero-gradient', {
-        scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 1 },
-        y: 150, scale: 1.3, opacity: 0,
-    });
-
-    // ── Section headings ──────────────────────────────────
-    gsap.utils.toArray('.sec-heading').forEach(h => {
-        gsap.from(h, {
-            scrollTrigger: { trigger: h, start: 'top 88%' },
-            x: -50, opacity: 0, duration: 0.7, ease: 'power3.out',
+        // ── Hero parallax on scroll ───────────────────────────
+        gsap.to('.hero-body', {
+            scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 1.2 },
+            y: -100, opacity: 0.3,
         });
-    });
-
-    // ── About ─────────────────────────────────────────────
-    gsap.from('.about-prose p', {
-        scrollTrigger: { trigger: '.about-prose', start: 'top 82%' },
-        y: 30, opacity: 0, stagger: 0.15, duration: 0.6, ease: 'power2.out',
-    });
-    gsap.from('.terminal-card', {
-        scrollTrigger: { trigger: '.terminal-card', start: 'top 82%' },
-        x: 60, rotateY: -8, opacity: 0, duration: 0.9, ease: 'power3.out',
-    });
-
-    // ── Skills columns ────────────────────────────────────
-    gsap.from('.skill-col', {
-        scrollTrigger: { trigger: '.skills-cols', start: 'top 82%' },
-        y: 50, opacity: 0, stagger: 0.12, duration: 0.7, ease: 'power3.out',
-    });
-    document.querySelectorAll('.skill-col').forEach(col => {
-        gsap.from(col.querySelectorAll('.pill'), {
-            scrollTrigger: { trigger: col, start: 'top 80%' },
-            scale: 0.5, opacity: 0, stagger: 0.04, duration: 0.35, ease: 'back.out(1.7)',
+        gsap.to('.hero-gradient', {
+            scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 1 },
+            y: 150, scale: 1.3, opacity: 0,
         });
-    });
 
-    // ── Project cards ─────────────────────────────────────
-    gsap.from('.proj-card', {
-        scrollTrigger: { trigger: '.project-grid', start: 'top 82%' },
-        y: 60, rotateX: 4, opacity: 0, stagger: 0.1, duration: 0.8, ease: 'power3.out',
-    });
-
-    // ── Timeline items ────────────────────────────────────
-    gsap.utils.toArray('.tl-item').forEach((item, i) => {
-        gsap.from(item, {
-            scrollTrigger: { trigger: item, start: 'top 88%' },
-            x: -40, opacity: 0, duration: 0.7, delay: i * 0.08, ease: 'power3.out',
+        // ── Section headings ──────────────────────────────────
+        gsap.utils.toArray('.sec-heading').forEach(h => {
+            gsap.from(h, {
+                scrollTrigger: { trigger: h, start: 'top 88%' },
+                x: -50, opacity: 0, duration: 0.7, ease: 'power3.out',
+            });
         });
-    });
 
-    // ── Contact ───────────────────────────────────────────
-    gsap.from('.contact-intro', {
-        scrollTrigger: { trigger: '.contact-intro', start: 'top 88%' },
-        y: 20, opacity: 0, duration: 0.6,
-    });
-    gsap.from('.c-card', {
-        scrollTrigger: { trigger: '.contact-grid', start: 'top 88%' },
-        y: 30, scale: 0.92, opacity: 0, stagger: 0.1, duration: 0.5, ease: 'back.out(1.3)',
-    });
+        // ── About ─────────────────────────────────────────────
+        gsap.from('.about-prose p', {
+            scrollTrigger: { trigger: '.about-prose', start: 'top 82%' },
+            y: 30, opacity: 0, stagger: 0.15, duration: 0.6, ease: 'power2.out',
+        });
+        gsap.from('.terminal-card', {
+            scrollTrigger: { trigger: '.terminal-card', start: 'top 82%' },
+            x: 60, rotateY: -8, opacity: 0, duration: 0.9, ease: 'power3.out',
+        });
 
-    // ── Animated counters ─────────────────────────────────
-    document.querySelectorAll('[data-count]').forEach(el => {
-        const target = parseInt(el.dataset.count);
-        ScrollTrigger.create({
-            trigger: el, start: 'top 92%', once: true,
-            onEnter: () => {
-                gsap.to({ v: 0 }, {
-                    v: target, duration: 1.4, ease: 'power2.out',
-                    onUpdate() { el.textContent = Math.round(this.targets()[0].v) + '+'; },
-                });
-            },
+        // ── Skills columns ────────────────────────────────────
+        gsap.from('.skill-col', {
+            scrollTrigger: { trigger: '.skills-cols', start: 'top 82%' },
+            y: 50, opacity: 0, stagger: 0.12, duration: 0.7, ease: 'power3.out',
         });
-    });
+        document.querySelectorAll('.skill-col').forEach(col => {
+            gsap.from(col.querySelectorAll('.pill'), {
+                scrollTrigger: { trigger: col, start: 'top 80%' },
+                scale: 0.5, opacity: 0, stagger: 0.04, duration: 0.35, ease: 'back.out(1.7)',
+            });
+        });
 
-    // ── 3D tilt on hover (cards) ──────────────────────────
-    const tiltCards = document.querySelectorAll('.proj-card, .skill-col, .tl-card, .c-card, .terminal-card');
-    tiltCards.forEach(card => {
-        card.addEventListener('mousemove', e => {
-            const r = card.getBoundingClientRect();
-            const cx = r.width / 2, cy = r.height / 2;
-            const x = e.clientX - r.left, y = e.clientY - r.top;
-            const rx = ((y - cy) / cy) * -5;
-            const ry = ((x - cx) / cx) * 5;
-            gsap.to(card, { rotateX: rx, rotateY: ry, duration: 0.35, ease: 'power2.out', transformPerspective: 800 });
+        // ── Project cards ─────────────────────────────────────
+        gsap.from('.proj-card', {
+            scrollTrigger: { trigger: '.project-grid', start: 'top 82%' },
+            y: 60, rotateX: 4, opacity: 0, stagger: 0.1, duration: 0.8, ease: 'power3.out',
         });
-        card.addEventListener('mouseleave', () => {
-            gsap.to(card, { rotateX: 0, rotateY: 0, duration: 0.5, ease: 'elastic.out(1,0.5)' });
-        });
-    });
 
-    // ── Magnetic buttons ──────────────────────────────────
-    document.querySelectorAll('.btn-glow, .btn-ghost, .resume-btn').forEach(btn => {
-        btn.addEventListener('mousemove', e => {
-            const r = btn.getBoundingClientRect();
-            const dx = (e.clientX - r.left - r.width / 2) * 0.15;
-            const dy = (e.clientY - r.top - r.height / 2) * 0.15;
-            gsap.to(btn, { x: dx, y: dy, duration: 0.3, ease: 'power2.out' });
+        // ── Timeline items ────────────────────────────────────
+        gsap.utils.toArray('.tl-item').forEach((item, i) => {
+            gsap.from(item, {
+                scrollTrigger: { trigger: item, start: 'top 88%' },
+                x: -40, opacity: 0, duration: 0.7, delay: i * 0.08, ease: 'power3.out',
+            });
         });
-        btn.addEventListener('mouseleave', () => {
-            gsap.to(btn, { x: 0, y: 0, duration: 0.5, ease: 'elastic.out(1,0.4)' });
+
+        // ── Contact ───────────────────────────────────────────
+        gsap.from('.contact-intro', {
+            scrollTrigger: { trigger: '.contact-intro', start: 'top 88%' },
+            y: 20, opacity: 0, duration: 0.6,
+        });
+        gsap.from('.c-card', {
+            scrollTrigger: { trigger: '.contact-grid', start: 'top 88%' },
+            y: 30, scale: 0.92, opacity: 0, stagger: 0.1, duration: 0.5, ease: 'back.out(1.3)',
+        });
+
+        // ── Animated counters ─────────────────────────────────
+        document.querySelectorAll('[data-count]').forEach(el => {
+            const target = parseInt(el.dataset.count);
+            ScrollTrigger.create({
+                trigger: el, start: 'top 92%', once: true,
+                onEnter: () => {
+                    gsap.to({ v: 0 }, {
+                        v: target, duration: 1.4, ease: 'power2.out',
+                        onUpdate() { el.textContent = Math.round(this.targets()[0].v) + '+'; },
+                    });
+                },
+            });
+        });
+
+        // ── 3D tilt on hover (cards) ──────────────────────────
+        const tiltCards = document.querySelectorAll('.proj-card, .skill-col, .tl-card, .c-card, .terminal-card');
+        tiltCards.forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const r = card.getBoundingClientRect();
+                const cx = r.width / 2, cy = r.height / 2;
+                const x = e.clientX - r.left, y = e.clientY - r.top;
+                const rx = ((y - cy) / cy) * -5;
+                const ry = ((x - cx) / cx) * 5;
+                gsap.to(card, { rotateX: rx, rotateY: ry, duration: 0.35, ease: 'power2.out', transformPerspective: 800 });
+            });
+            card.addEventListener('mouseleave', () => {
+                gsap.to(card, { rotateX: 0, rotateY: 0, duration: 0.5, ease: 'elastic.out(1,0.5)' });
+            });
+        });
+
+        // ── Magnetic buttons ──────────────────────────────────
+        document.querySelectorAll('.btn-glow, .btn-ghost, .resume-btn').forEach(btn => {
+            btn.addEventListener('mousemove', e => {
+                const r = btn.getBoundingClientRect();
+                const dx = (e.clientX - r.left - r.width / 2) * 0.15;
+                const dy = (e.clientY - r.top - r.height / 2) * 0.15;
+                gsap.to(btn, { x: dx, y: dy, duration: 0.3, ease: 'power2.out' });
+            });
+            btn.addEventListener('mouseleave', () => {
+                gsap.to(btn, { x: 0, y: 0, duration: 0.5, ease: 'elastic.out(1,0.4)' });
+            });
         });
     });
 }
