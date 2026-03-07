@@ -193,14 +193,14 @@ function initGSAP() {
         // ── Hero entrance ─────────────────────────────────────
         const heroTl = gsap.timeline({ defaults: { ease: 'power4.out', duration: 1 } });
         heroTl
-            .from('.hero-tag', { y: 30, opacity: 0 })
-            .from('.line-1', { y: 80, opacity: 0, skewY: 4 }, '-=0.7')
-            .from('.line-2', { y: 80, opacity: 0, skewY: 4 }, '-=0.8')
-            .from('.hero-role', { y: 20, opacity: 0 }, '-=0.6')
-            .from('.hero-bio', { y: 20, opacity: 0 }, '-=0.7')
-            .from('.hero-actions', { y: 20, opacity: 0 }, '-=0.7')
-            .from('.metric', { y: 30, opacity: 0, stagger: 0.12 }, '-=0.5')
-            .from('.scroll-cue', { opacity: 0 }, '-=0.3');
+            .fromTo('.hero-tag', { y: 30, opacity: 0 }, { y: 0, opacity: 1 })
+            .fromTo('.line-1', { y: 80, opacity: 0, skewY: 4 }, { y: 0, opacity: 1, skewY: 0 }, '-=0.7')
+            .fromTo('.line-2', { y: 80, opacity: 0, skewY: 4 }, { y: 0, opacity: 1, skewY: 0 }, '-=0.8')
+            .fromTo('.hero-role', { y: 20, opacity: 0 }, { y: 0, opacity: 1 }, '-=0.6')
+            .fromTo('.hero-bio', { y: 20, opacity: 0 }, { y: 0, opacity: 1 }, '-=0.7')
+            .fromTo('.hero-actions', { y: 20, opacity: 0 }, { y: 0, opacity: 1 }, '-=0.7')
+            .fromTo('.metric', { y: 30, opacity: 0 }, { y: 0, opacity: 1, stagger: 0.12 }, '-=0.5')
+            .fromTo('.scroll-cue', { opacity: 0 }, { opacity: 1 }, '-=0.3');
 
         // ── Hero parallax on scroll ───────────────────────────
         gsap.to('.hero-body', {
@@ -214,57 +214,84 @@ function initGSAP() {
 
         // ── Section headings ──────────────────────────────────
         gsap.utils.toArray('.sec-heading').forEach(h => {
-            gsap.from(h, {
-                scrollTrigger: { trigger: h, start: 'top 88%' },
-                x: -50, opacity: 0, duration: 0.7, ease: 'power3.out',
-            });
+            gsap.fromTo(h,
+                { x: -50, opacity: 0 },
+                {
+                    scrollTrigger: { trigger: h, start: 'top 88%' },
+                    x: 0, opacity: 1, duration: 0.7, ease: 'power3.out',
+                }
+            );
         });
 
         // ── About ─────────────────────────────────────────────
-        gsap.from('.about-prose p', {
-            scrollTrigger: { trigger: '.about-prose', start: 'top 82%' },
-            y: 30, opacity: 0, stagger: 0.15, duration: 0.6, ease: 'power2.out',
-        });
-        gsap.from('.terminal-card', {
-            scrollTrigger: { trigger: '.terminal-card', start: 'top 82%' },
-            x: 60, rotateY: -8, opacity: 0, duration: 0.9, ease: 'power3.out',
-        });
+        gsap.fromTo('.about-prose p',
+            { y: 30, opacity: 0 },
+            {
+                scrollTrigger: { trigger: '.about-prose', start: 'top 82%' },
+                y: 0, opacity: 1, stagger: 0.15, duration: 0.6, ease: 'power2.out',
+            }
+        );
+        gsap.fromTo('.terminal-card',
+            { x: 60, rotateY: -8, opacity: 0 },
+            {
+                scrollTrigger: { trigger: '.terminal-card', start: 'top 82%' },
+                x: 0, rotateY: 0, opacity: 1, duration: 0.9, ease: 'power3.out',
+            }
+        );
 
         // ── Skills columns ────────────────────────────────────
-        gsap.from('.skill-col', {
-            scrollTrigger: { trigger: '.skills-cols', start: 'top 82%' },
-            y: 50, opacity: 0, stagger: 0.12, duration: 0.7, ease: 'power3.out',
-        });
+        gsap.fromTo('.skill-col',
+            { y: 50, opacity: 0 },
+            {
+                scrollTrigger: { trigger: '.skills-cols', start: 'top 82%' },
+                y: 0, opacity: 1, stagger: 0.12, duration: 0.7, ease: 'power3.out',
+            }
+        );
         document.querySelectorAll('.skill-col').forEach(col => {
-            gsap.from(col.querySelectorAll('.pill'), {
-                scrollTrigger: { trigger: col, start: 'top 80%' },
-                scale: 0.5, opacity: 0, stagger: 0.04, duration: 0.35, ease: 'back.out(1.7)',
-            });
+            gsap.fromTo(col.querySelectorAll('.pill'),
+                { scale: 0.5, opacity: 0 },
+                {
+                    scrollTrigger: { trigger: col, start: 'top 80%' },
+                    scale: 1, opacity: 1, stagger: 0.04, duration: 0.35, ease: 'back.out(1.7)',
+                }
+            );
         });
 
         // ── Project cards ─────────────────────────────────────
-        gsap.from('.proj-card', {
-            scrollTrigger: { trigger: '.project-grid', start: 'top 82%' },
-            y: 60, rotateX: 4, opacity: 0, stagger: 0.1, duration: 0.8, ease: 'power3.out',
-        });
+        gsap.fromTo('.proj-card',
+            { y: 60, rotateX: 4, opacity: 0 },
+            {
+                scrollTrigger: { trigger: '.project-grid', start: 'top 82%' },
+                y: 0, rotateX: 0, opacity: 1, stagger: 0.1, duration: 0.8, ease: 'power3.out',
+            }
+        );
 
         // ── Timeline items ────────────────────────────────────
         gsap.utils.toArray('.tl-item').forEach((item, i) => {
-            gsap.from(item, {
-                scrollTrigger: { trigger: item, start: 'top 88%' },
-                x: -40, opacity: 0, duration: 0.7, delay: i * 0.08, ease: 'power3.out',
-            });
+            gsap.fromTo(item,
+                { x: -40, opacity: 0 },
+                {
+                    scrollTrigger: { trigger: item, start: 'top 88%' },
+                    x: 0, opacity: 1, duration: 0.7, delay: i * 0.08, ease: 'power3.out',
+                }
+            );
         });
 
         // ── Contact ───────────────────────────────────────────
-        gsap.from('.contact-intro', {
-            scrollTrigger: { trigger: '.contact-intro', start: 'top 88%' },
-            y: 20, opacity: 0, duration: 0.6,
-        });
-        gsap.from('.c-card', {
-            scrollTrigger: { trigger: '.contact-grid', start: 'top 88%' },
-            y: 30, scale: 0.92, opacity: 0, stagger: 0.1, duration: 0.5, ease: 'back.out(1.3)',
-        });
+        gsap.fromTo('.contact-intro',
+            { y: 20, opacity: 0 },
+            {
+                scrollTrigger: { trigger: '.contact-intro', start: 'top 88%' },
+                y: 0, opacity: 1, duration: 0.6,
+            }
+        );
+        gsap.fromTo('.c-card',
+            { y: 30, scale: 0.92, opacity: 0 },
+            {
+                scrollTrigger: { trigger: '.contact-grid', start: 'top 88%' },
+                y: 0, scale: 1, opacity: 1, stagger: 0.1, duration: 0.5, ease: 'back.out(1.3)',
+            }
+        );
 
         // ── Animated counters ─────────────────────────────────
         document.querySelectorAll('[data-count]').forEach(el => {
