@@ -180,12 +180,7 @@ function initGSAP() {
     if (!window.gsap || !window.ScrollTrigger) return;
     gsap.registerPlugin(ScrollTrigger);
 
-    // Refresh ScrollTrigger on layout shifts (e.g. font load)
-    if (document.fonts) {
-        document.fonts.ready.then(() => ScrollTrigger.refresh());
-    }
-    window.addEventListener('load', () => ScrollTrigger.refresh());
-    // Auto refresh periodically in case of slow renders
+    // Refresh ScrollTrigger periodically 
     setTimeout(() => ScrollTrigger.refresh(), 1000);
     setTimeout(() => ScrollTrigger.refresh(), 3000);
 
@@ -326,14 +321,24 @@ document.addEventListener('DOMContentLoaded', () => {
     initCardGlow();
 
     // GSAP (only if loaded)
+    function safelyInitGSAP() {
+        if (document.fonts) {
+            document.fonts.ready.then(() => {
+                setTimeout(initGSAP, 200); // Give structural changes an extra moment
+            });
+        } else {
+            window.addEventListener('load', initGSAP);
+        }
+    }
+
     if (window.gsap && window.ScrollTrigger) {
-        initGSAP();
+        safelyInitGSAP();
     } else {
         // Retry after CDN loads
         const wait = setInterval(() => {
             if (window.gsap && window.ScrollTrigger) {
                 clearInterval(wait);
-                initGSAP();
+                safelyInitGSAP();
             }
         }, 100);
         // Give up after 5s — everything stays visible without GSAP
