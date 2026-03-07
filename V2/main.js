@@ -13,19 +13,21 @@ const roles = [
 
 class TypeWriter {
     constructor(el, words, speed = 80, del = 45, pause = 2200) {
+        if (el._typewriterTimeout) clearTimeout(el._typewriterTimeout);
         this.el = el; this.words = words;
         this.speed = speed; this.del = del; this.pause = pause;
         this.i = 0; this.j = 0; this.deleting = false;
         this.tick();
     }
     tick() {
+        if (!this.el.isConnected) return;
         const word = this.words[this.i];
         this.j += this.deleting ? -1 : 1;
         this.el.textContent = word.substring(0, this.j);
         let wait = this.deleting ? this.del : this.speed;
         if (!this.deleting && this.j === word.length) { wait = this.pause; this.deleting = true; }
         else if (this.deleting && this.j === 0) { this.deleting = false; this.i = (this.i + 1) % this.words.length; wait = 400; }
-        setTimeout(() => this.tick(), wait);
+        this.el._typewriterTimeout = setTimeout(() => this.tick(), wait);
     }
 }
 
@@ -177,6 +179,15 @@ function initCardGlow() {
 function initGSAP() {
     if (!window.gsap || !window.ScrollTrigger) return;
     gsap.registerPlugin(ScrollTrigger);
+
+    // Refresh ScrollTrigger on layout shifts (e.g. font load)
+    if (document.fonts) {
+        document.fonts.ready.then(() => ScrollTrigger.refresh());
+    }
+    window.addEventListener('load', () => ScrollTrigger.refresh());
+    // Auto refresh periodically in case of slow renders
+    setTimeout(() => ScrollTrigger.refresh(), 1000);
+    setTimeout(() => ScrollTrigger.refresh(), 3000);
 
     // ── Hero entrance ─────────────────────────────────────
     const heroTl = gsap.timeline({ defaults: { ease: 'power4.out', duration: 1 } });
