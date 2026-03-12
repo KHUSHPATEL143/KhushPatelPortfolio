@@ -1,17 +1,293 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Khush Patel — Full Stack Developer</title>
+    <meta name="description"
+        content="Portfolio of Khush Patel — Full Stack Developer specializing in Flutter, React, Node.js, and Python." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="/style.css" />
+</head>
+
+<body>
+
+    <!-- ───── Nav ───── -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-inner">
+            <a href="#" class="logo" id="logoLink"><span class="logo-accent">&lt;</span>KP<span
+                    class="logo-accent">/&gt;</span></a>
+            <div class="nav-menu" id="navMenu">
+                <a href="#about" class="nav-item">About</a>
+                <a href="#skills" class="nav-item">Skills</a>
+                <a href="#projects" class="nav-item">Projects</a>
+                <a href="#journey" class="nav-item">Journey</a>
+                <a href="#contact" class="nav-item">Contact</a>
+            </div>
+            <a href="/Profile.pdf" download class="resume-btn"><i class="fas fa-arrow-down"></i> Resume</a>
+            <button class="burger" id="burger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ───── HERO ───── -->
+    <section class="hero" id="hero">
+        <!-- Background layers -->
+        <div class="hero-grid"></div>
+        <div class="hero-gradient"></div>
+        <canvas class="hero-canvas" id="heroCanvas"></canvas>
+
+        <div class="hero-body">
+            <span class="hero-tag"><i class="fas fa-bolt"></i> Open to Work</span>
+            <h1 class="hero-heading">
+                <span class="line line-1">I'm <em class="accent-name">Khush</em></span>
+                <span class="line line-2"><em class="accent-name">Patel</em></span>
+            </h1>
+            <p class="hero-role">
+                <span class="role-prefix">A</span>
+                <span class="role-typed" id="roleTyped"></span>
+                <span class="role-cursor">_</span>
+            </p>
+            <p class="hero-bio">
+                Full-stack developer &amp; CS student crafting performant apps from Flutter desktops to modern web.
+            </p>
+            <div class="hero-actions">
+                <a href="#projects" class="btn-glow">Explore Work</a>
+                <a href="#contact" class="btn-ghost"><i class="fas fa-paper-plane"></i> Say Hello</a>
+            </div>
+            <div class="hero-metrics">
+                <div class="metric"><strong data-count="27">0</strong><span>Repos</span></div>
+                <div class="metric"><strong data-count="6">0</strong><span>Tech Stacks</span></div>
+                <div class="metric"><strong data-count="4">0</strong><span>Projects</span></div>
+            </div>
+        </div>
+
+        <div class="scroll-cue"><span>Scroll</span>
+            <div class="scroll-bar"></div>
+        </div>
+    </section>
+
+    <!-- ───── ABOUT ───── -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2 class="sec-heading"><span class="sec-num">01</span>About Me</h2>
+            <div class="about-row">
+                <div class="about-prose">
+                    <p>I'm <strong>Khush Patel</strong>, a Computer Science student at <strong>Silver Oak
+                            University</strong> (2025-2029) and an active builder at <strong>CodingGita</strong>.</p>
+                    <p>I build across domains — from production-grade <strong>Flutter desktop apps</strong> with
+                        Riverpod state management to <strong>Node.js backends</strong>, <strong>React
+                            frontends</strong>, and <strong>Python APIs</strong>. I love turning complex problems into
+                        elegant, user-friendly solutions.</p>
+                    <p>When I'm not writing code, I'm exploring new technologies, joining hackathons, and collaborating
+                        with fellow developers.</p>
+                </div>
+                <div class="terminal-card">
+                    <div class="terminal-bar">
+                        <span class="td red"></span><span class="td yellow"></span><span class="td green"></span>
+                        <span class="terminal-label">~/khush</span>
+                    </div>
+                    <pre class="terminal-body"><span class="t-k">const</span> <span class="t-v">dev</span> = {
+  <span class="t-p">name</span>: <span class="t-s">"Khush Patel"</span>,
+  <span class="t-p">role</span>: <span class="t-s">"Full Stack Developer"</span>,
+  <span class="t-p">university</span>: <span class="t-s">"Silver Oak University"</span>,
+  <span class="t-p">degree</span>: <span class="t-s">"B.Tech CS (2025-2029)"</span>,
+  <span class="t-p">community</span>: <span class="t-s">"CodingGita"</span>,
+  <span class="t-p">loves</span>: [<span class="t-s">"Code"</span>, <span class="t-s">"Design"</span>, <span class="t-s">"Innovation"</span>]
+};</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ───── SKILLS ───── -->
+    <section class="section section-alt" id="skills">
+        <div class="container">
+            <h2 class="sec-heading"><span class="sec-num">02</span>Tech Stack</h2>
+            <div class="skills-cols">
+                <div class="skill-col">
+                    <h3 class="skill-label"><i class="fas fa-palette"></i> Frontend</h3>
+                    <div class="pills">
+                        <span class="pill"><i class="fab fa-react"></i> React</span>
+                        <span class="pill"><i class="fab fa-html5"></i> HTML5</span>
+                        <span class="pill"><i class="fab fa-css3-alt"></i> CSS3</span>
+                        <span class="pill"><i class="fab fa-js-square"></i> JavaScript</span>
+                        <span class="pill">🐦 Flutter</span>
+                        <span class="pill">🎯 Dart</span>
+                    </div>
+                </div>
+                <div class="skill-col">
+                    <h3 class="skill-label"><i class="fas fa-server"></i> Backend</h3>
+                    <div class="pills">
+                        <span class="pill"><i class="fab fa-node-js"></i> Node.js</span>
+                        <span class="pill"><i class="fab fa-python"></i> Python</span>
+                        <span class="pill"><i class="fas fa-fire"></i> Firebase</span>
+                        <span class="pill">⚡ Express.js</span>
+                        <span class="pill">🍃 MongoDB</span>
+                    </div>
+                </div>
+                <div class="skill-col">
+                    <h3 class="skill-label"><i class="fas fa-wrench"></i> Tools</h3>
+                    <div class="pills">
+                        <span class="pill"><i class="fab fa-git-alt"></i> Git</span>
+                        <span class="pill"><i class="fab fa-github"></i> GitHub</span>
+                        <span class="pill"><i class="fab fa-figma"></i> Figma</span>
+                        <span class="pill">📝 VS Code</span>
+                        <span class="pill">🗄️ SQLite</span>
+                        <span class="pill"><i class="fab fa-linux"></i> Linux</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ───── PROJECTS ───── -->
+    <section class="section" id="projects">
+        <div class="container">
+            <h2 class="sec-heading"><span class="sec-num">03</span>Featured Projects</h2>
+            <div class="project-grid">
+
+                <article class="proj-card">
+                    <div class="proj-top">
+                        <div class="proj-icon"><i class="fas fa-industry"></i></div>
+                        <a href="https://github.com/KHUSHPATEL143/Ecotouch_flutter" target="_blank" class="proj-gh"><i
+                                class="fab fa-github"></i></a>
+                    </div>
+                    <h3>Ecotouch Dashboard</h3>
+                    <p>Production management system for factories — inventory, attendance, production batches & reports
+                        with Excel/PDF export.</p>
+                    <div class="proj-tags">
+                        <span>Flutter</span><span>Riverpod</span><span>SQLite</span><span>Windows</span></div>
+                </article>
+
+                <article class="proj-card">
+                    <div class="proj-top">
+                        <div class="proj-icon"><i class="fas fa-code"></i></div>
+                        <a href="https://github.com/KHUSHPATEL143/codehub" target="_blank" class="proj-gh"><i
+                                class="fab fa-github"></i></a>
+                    </div>
+                    <h3>CodeHub</h3>
+                    <p>Collaborative coding platform for developers to share, discover and collaborate on code snippets
+                        and projects.</p>
+                    <div class="proj-tags"><span>JavaScript</span><span>HTML</span><span>CSS</span><span>Node.js</span>
+                    </div>
+                </article>
+
+                <article class="proj-card">
+                    <div class="proj-top">
+                        <div class="proj-icon"><i class="fas fa-brain"></i></div>
+                        <a href="https://github.com/KHUSHPATEL143/codehubAI" target="_blank" class="proj-gh"><i
+                                class="fab fa-github"></i></a>
+                    </div>
+                    <h3>CodeHub AI</h3>
+                    <p>AI-powered coding assistant using Google AI Studio — helps developers write, debug and understand
+                        code through conversation.</p>
+                    <div class="proj-tags"><span>AI Studio</span><span>JavaScript</span><span>API</span></div>
+                </article>
+
+                <article class="proj-card">
+                    <div class="proj-top">
+                        <div class="proj-icon"><i class="fas fa-utensils"></i></div>
+                        <a href="https://github.com/KHUSHPATEL143/restaurant" target="_blank" class="proj-gh"><i
+                                class="fab fa-github"></i></a>
+                    </div>
+                    <h3>Restaurant App</h3>
+                    <p>Full-stack restaurant management with menu management, order processing and customer features.
+                    </p>
+                    <div class="proj-tags">
+                        <span>JavaScript</span><span>Node.js</span><span>Express</span><span>MongoDB</span></div>
+                </article>
+
+            </div>
+            <div class="center-link">
+                <a href="https://github.com/KHUSHPATEL143?tab=repositories" target="_blank" class="btn-ghost"><i
+                        class="fab fa-github"></i> All Repositories</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ───── JOURNEY ───── -->
+    <section class="section section-alt" id="journey">
+        <div class="container">
+            <h2 class="sec-heading"><span class="sec-num">04</span>Journey</h2>
+            <div class="timeline">
+                <div class="tl-item">
+                    <div class="tl-dot"></div>
+                    <div class="tl-card">
+                        <span class="tl-badge">2025 – 2029</span>
+                        <h3>B.Tech Computer Science</h3>
+                        <span class="tl-org">Silver Oak University</span>
+                        <p>Pursuing CS&E with focus on software development, DSA & modern app architecture.</p>
+                    </div>
+                </div>
+                <div class="tl-item">
+                    <div class="tl-dot"></div>
+                    <div class="tl-card">
+                        <span class="tl-badge">Active Member</span>
+                        <h3>Student Developer</h3>
+                        <span class="tl-org">CodingGita Community</span>
+                        <p>Collaborating on full-stack projects, coding workshops, hackathons & team projects.</p>
+                    </div>
+                </div>
+                <div class="tl-item">
+                    <div class="tl-dot"></div>
+                    <div class="tl-card">
+                        <span class="tl-badge">Project</span>
+                        <h3>Freelance Developer</h3>
+                        <span class="tl-org">Ecotouch / VayuWebs</span>
+                        <p>Built a production management desktop app handling inventory, attendance & reporting for
+                            factory operations.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ───── CONTACT ───── -->
+    <section class="section" id="contact">
+        <div class="container">
+            <h2 class="sec-heading"><span class="sec-num">05</span>Let's Connect</h2>
+            <p class="contact-intro">Have a project in mind or just want to chat? I'd love to hear from you.</p>
+            <div class="contact-grid">
+                <a href="mailto:khushpatel9979@gmail.com" class="c-card">
+                    <i class="fas fa-envelope"></i>
+                    <strong>Email</strong>
+                    <span>khushpatel9979@gmail.com</span>
+                </a>
+                <a href="https://github.com/KHUSHPATEL143" target="_blank" class="c-card">
+                    <i class="fab fa-github"></i>
+                    <strong>GitHub</strong>
+                    <span>KHUSHPATEL143</span>
+                </a>
+                <a href="https://www.linkedin.com/in/khushpatel9979/" target="_blank" class="c-card">
+                    <i class="fab fa-linkedin-in"></i>
+                    <strong>LinkedIn</strong>
+                    <span>khushpatel9979</span>
+                </a>
+            </div>
+            <div class="center-link" style="margin-top:48px">
+                <a href="mailto:khushpatel9979@gmail.com" class="btn-glow"><i class="fas fa-paper-plane"></i> Send a
+                    Message</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ───── FOOTER ───── -->
+    <footer class="footer">
+        <span>Built by <strong>Khush Patel</strong> · © 2025</span>
+    </footer>
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script type="module" src="/main.js"></script>
+</body>
+
 </html>
