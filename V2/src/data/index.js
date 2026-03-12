@@ -77,7 +77,7 @@ export const journey = [
   {
     date: '2025 — Present',
     title: 'B.Tech Computer Science',
-    where: 'Silver Oak University, Gujarat',
+    where: 'Swaminarayan University, Gujarat',
     desc:
       'Pursuing CS&E with focus on software development, data structures, algorithms, and modern application architecture.',
   },
