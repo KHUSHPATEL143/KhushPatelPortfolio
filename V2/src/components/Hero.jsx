@@ -80,7 +80,7 @@ export default function Hero() {
               ['name',       `"${personal.name}"`],
               ['role',       '"Full Stack Dev"'],
               ['location',   `"${personal.location}"`],
-              ['university', '"Silver Oak"'],
+              ['institute', '"Codinggita"'],
               ['stack',      null],
             ].map(([key, val]) =>
               val ? (
