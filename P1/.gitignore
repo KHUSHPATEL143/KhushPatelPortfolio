@@ -13,8 +13,7 @@ dist
 dist-ssr
 *.local
 
-# E
-ditor directories and files
+# Editor directories and files
 .vscode/*
 !.vscode/extensions.json
 .idea
@@ -24,3 +23,16 @@ ditor directories and files
 *.njsproj
 *.sln
 *.sw?
+
+# Build Logs / Local Output
+build_log.txt
+code.txt
+
+# Environment Config
+.env
+.env.local
+.env.*.local
+
+# Vite Caches
+.vite/
+.eslintcache
