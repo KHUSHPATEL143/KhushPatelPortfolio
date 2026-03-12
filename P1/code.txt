@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cinematic Work Gallery Grid</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@300;400;700&amp;family=Noto+Sans:wght@300;400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        :root {
+            --bg-deep: #141016;
+            --text-soft: #EEEAF2;
+            --accent-purple: #C9B8E6;
+            --glow-purple: #6B4E9B;
+            --dim-purple: #2A2230;
+        }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-soft);
+        }
+        .cinematic-glow:hover {
+            box-shadow: 0 0 50px -10px var(--glow-purple);
+        }
+        .project-card {
+            transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .asymmetric-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 6rem;
+        }
+        .divider-purple {
+            background: linear-gradient(90deg, var(--accent-purple), transparent);
+            height: 1px;
+            opacity: 0.2;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "purple-accent": "#C9B8E6",
+                        "purple-glow": "#6B4E9B",
+                        "soft-light": "#EEEAF2",
+                        "background-dark": "#141016",
+                    },
+                    fontFamily: {
+                        "display": ["Noto Serif", "serif"],
+                        "sans": ["Noto Sans", "sans-serif"]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="font-display bg-background-dark text-soft-light antialiased selection:bg-purple-glow/30">
+<header class="fixed top-0 left-0 w-full z-50 px-10 py-8">
+<nav class="max-w-[1600px] mx-auto flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-2 h-2 rounded-full bg-purple-accent shadow-[0_0_10px_#C9B8E6]"></div>
+<span class="text-[10px] font-sans font-bold tracking-[0.5em] uppercase">Maison Violet</span>
+</div>
+<div class="hidden md:flex items-center gap-16">
+<a class="text-[9px] uppercase tracking-[0.5em] hover:text-purple-accent transition-colors" href="#">Portfolio</a>
+<a class="text-[9px] uppercase tracking-[0.5em] hover:text-purple-accent transition-colors" href="#">Archive</a>
+<a class="text-[9px] uppercase tracking-[0.5em] hover:text-purple-accent transition-colors" href="#">Studio</a>
+</div>
+<button class="flex items-center gap-6 group">
+<span class="text-[9px] uppercase tracking-[0.5em]">Index</span>
+<div class="flex flex-col gap-1.5">
+<div class="w-5 h-[1px] bg-soft-light group-hover:bg-purple-accent transition-colors"></div>
+<div class="w-3 h-[1px] bg-soft-light group-hover:bg-purple-accent transition-colors self-end"></div>
+</div>
+</button>
+</nav>
+</header>
+<main class="relative pt-52 pb-40">
+<section class="max-w-[1600px] mx-auto px-10 mb-40">
+<div class="flex flex-col gap-4">
+<span class="text-purple-accent text-[10px] uppercase tracking-[0.7em] font-sans font-medium">Curated Anthology</span>
+<h1 class="text-7xl md:text-9xl font-light tracking-tighter leading-none">Selected<br/><span class="ml-24 md:ml-48 italic opacity-80">Work</span></h1>
+</div>
+</section>
+<div class="max-w-[1600px] mx-auto px-10">
+<section class="mb-56">
+<div class="group relative project-card w-full max-w-[1200px] mx-auto cinematic-glow">
+<div class="aspect-[16/7] overflow-hidden bg-[#1c1620]">
+<div class="w-full h-full bg-center bg-cover transition-transform duration-1000 group-hover:scale-105" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDQF6UF4EMwTNOojECYYl4H0fi96vaFtzxufw4LllVkQPnAW_2ysgZ-kqkHNK1GsWBRK5VVB7ChbnG3KVxEVti70I7twTaYg9frnklFr2pvHXZN3icEUQK6wiNQZsoOG9G4ANoUVGAe2pGSCE6fZV7BL2Khi5m7f6I_kaItS0a4FMRo_394do1kLPNc0GyJJ9KnQoOrSLrtjktERX85z-OVtQmU1ooeEFY3towoL-NZuR-NgCgdpGwFCaP-XzaQTn9jltJGOFxgsr3Q");'>
+</div>
+</div>
+<div class="mt-10 flex flex-col md:flex-row justify-between items-start gap-8">
+<div class="flex gap-12">
+<span class="text-purple-accent font-sans text-xs tracking-widest pt-1.5">N° 001</span>
+<div>
+<h2 class="text-4xl font-light mb-3">Velvet Nocturne</h2>
+<p class="text-soft-light/40 text-[10px] uppercase tracking-[0.4em] font-sans">Cinematography / 2024</p>
+</div>
+</div>
+<div class="h-px flex-grow hidden md:block mx-12 mt-5 bg-purple-accent/10"></div>
+<button class="text-[9px] uppercase tracking-[0.5em] border border-soft-light/20 px-6 py-3 hover:bg-soft-light hover:text-background-dark transition-all duration-300">
+                        View Frame
+                    </button>
+</div>
+</div>
+</section>
+<div class="asymmetric-grid mb-56">
+<div class="col-span-12 md:col-span-5 md:pt-40">
+<div class="group relative project-card cinematic-glow">
+<div class="aspect-[4/5] overflow-hidden bg-[#1c1620]">
+<div class="w-full h-full bg-center bg-cover transition-transform duration-1000 group-hover:scale-110" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDV9eGZIuRwlnxo4H48-VfGKic9fjtmn0eLr5537XJD7zXPL8rjX8abrAWKZG4JBKUrLlwKyEjLk0Kiynv_wcJurJR6kejMomgUZizCOaOAHhJIwzrBKS31f3Am3dmVzEM28G25Q1P7tctrHPHKQYTApkI7VGU5Ek9sTIEhWBl8mRZKoJN-xGrrqZokH7fzBKrGh46LXAOpQ0_ZfI48XLsTTzjMXHjaEqjYTPc1QTIxdgqi2aTKT3cPhauSpNJmGMPhp5l_wULjMkn2");'>
+</div>
+</div>
+<div class="mt-8">
+<div class="flex items-center gap-6 mb-4">
+<span class="text-purple-accent font-sans text-[10px] tracking-widest">N° 002</span>
+<div class="h-px w-8 bg-purple-accent/30"></div>
+</div>
+<h2 class="text-3xl font-light mb-2">Shadow Play</h2>
+<p class="text-soft-light/40 text-[9px] uppercase tracking-[0.4em] font-sans">Visual Direction</p>
+</div>
+</div>
+</div>
+<div class="col-span-12 md:col-span-7">
+<div class="group relative project-card cinematic-glow">
+<div class="aspect-[1/1] overflow-hidden bg-[#1c1620]">
+<div class="w-full h-full bg-center bg-cover transition-transform duration-1000 group-hover:scale-105" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAuUvdVp5qljbiecAuyWAbY5P9hmKuo55t9UsjF7DyYqpWV4JIWYSoy1b8gETroM3i-_NjgBUXuYgTuZyto9_UxFJK_g0S-iEUeezdLl7AeUXHM3pOJ3PcLUC7V6qTdmodgslXabpDSfc74Xb3OaMqMtw2sOgQQ5R2KHqSB5SYTCZeKk5_nm91GGSiTQxLOA-lICc0H-sx6AN_QyPMeyiJjX_kNZiVtwYeCtJz0Xm7raZTs3BhT-UvertSZdioF9OnUCgidTmxEAsYl");'>
+</div>
+</div>
+<div class="mt-8">
+<div class="flex items-center gap-6 mb-4">
+<span class="text-purple-accent font-sans text-[10px] tracking-widest">N° 003</span>
+<div class="h-px w-8 bg-purple-accent/30"></div>
+</div>
+<h2 class="text-3xl font-light mb-2">Lumina Series</h2>
+<p class="text-soft-light/40 text-[9px] uppercase tracking-[0.4em] font-sans">Color Grading</p>
+</div>
+</div>
+</div>
+</div>
+<section class="mb-56 flex justify-end">
+<div class="group relative project-card w-full max-w-[1000px] cinematic-glow">
+<div class="aspect-[16/10] overflow-hidden bg-[#1c1620]">
+<div class="w-full h-full bg-center bg-cover transition-transform duration-1000 group-hover:scale-105" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB3yzIXCeDeJ09Evk2deYHgaU3ii5Z4-Kt9qs2aJYfzJT4XeuYg2KVTzhQWqIiKiZgVeQIhHUq9JIwR3mIWs-FdSBzz_wG1swpAPd73q_1SKqDLxSayCdudB2hEtl9-Q1c39VznIhloTgiXiKwnojfPDhDBvUMeViE7CH6p2O_rLjK41oy0FOfPMx5iYHP6nK0VHjQdBFD_ryzd2mv4sy239l7KXTfxElVWpAz5pX-1F76Tde6z0gqgMAjITSNKNDNRIPknXNCcAukh");'>
+</div>
+</div>
+<div class="mt-10">
+<div class="flex items-baseline gap-10">
+<span class="text-purple-accent font-sans text-xs tracking-widest">N° 004</span>
+<h2 class="text-5xl font-light">Ethereal Static</h2>
+</div>
+<div class="divider-purple mt-8 mb-4"></div>
+<div class="flex justify-between items-center">
+<p class="text-soft-light/40 text-[9px] uppercase tracking-[0.4em] font-sans">Art Direction / 2023</p>
+<span class="material-symbols-outlined text-purple-accent text-lg">north_east</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+<section class="max-w-[1600px] mx-auto px-10 pt-20">
+<div class="border-t border-purple-accent/10 pt-32 flex flex-col items-center">
+<p class="text-purple-accent text-[10px] uppercase tracking-[0.8em] mb-12">Inquiries</p>
+<a class="text-5xl md:text-8xl font-light tracking-tight hover:italic transition-all duration-500" href="mailto:studio@example.com">
+                Begin the Dialogue
+            </a>
+<div class="mt-24 flex gap-16">
+<a class="text-[9px] uppercase tracking-[0.5em] text-soft-light/40 hover:text-purple-accent transition-colors" href="#">Instagram</a>
+<a class="text-[9px] uppercase tracking-[0.5em] text-soft-light/40 hover:text-purple-accent transition-colors" href="#">Vimeo</a>
+<a class="text-[9px] uppercase tracking-[0.5em] text-soft-light/40 hover:text-purple-accent transition-colors" href="#">LinkedIn</a>
+</div>
+</div>
+</section>
+</main>
+<footer class="px-10 py-12 border-t border-purple-accent/5">
+<div class="max-w-[1600px] mx-auto flex flex-col md:flex-row justify-between items-center gap-8 text-[9px] uppercase tracking-[0.5em] text-soft-light/30">
+<p>© 2024 Maison Violet Studio</p>
+<div class="flex gap-12">
+<a class="hover:text-purple-accent transition-colors" href="#">Terms</a>
+<a class="hover:text-purple-accent transition-colors" href="#">Privacy</a>
+</div>
+</div>
+</footer>
+
+</body></html>
