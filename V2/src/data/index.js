@@ -2,7 +2,7 @@ export const personal = {
   name: 'Khush Patel',
   role: 'Full Stack Developer',
   location: 'Gujarat, India',
-  university: 'Silver Oak University',
+  university: 'Swaminarayan university',
   degree: 'B.Tech CS (2025–2029)',
   community: 'CodingGita',
   email: 'khushpatel9979@gmail.com',
