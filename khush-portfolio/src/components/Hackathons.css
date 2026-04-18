@@ -1,0 +1,209 @@
+.hackathons__list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.hackathon-card {
+  display: flex;
+  gap: 28px;
+  padding: 32px;
+}
+
+.hackathon-card__left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.hackathon-card__number {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(255,170,0,0.25);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hackathon-card__timeline-line {
+  width: 1px;
+  flex: 1;
+  background: var(--border);
+  min-height: 20px;
+}
+
+.hackathon-card__content {
+  flex: 1;
+}
+
+.hackathon-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.hackathon-card__name {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.hackathon-card__meta {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  letter-spacing: 0.05em;
+}
+
+.hackathon-card__outcome {
+  flex-shrink: 0;
+}
+
+/* Photo inside hackathon card */
+.hackathon-card__photo {
+  position: relative;
+  width: 100%;
+  max-height: 360px;
+  border-radius: var(--radius-lg, 12px);
+  overflow: hidden;
+  margin-bottom: 20px;
+  cursor: pointer;
+  border: 1px solid var(--border);
+}
+
+.hackathon-card__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.hackathon-card__photo-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: 0.08em;
+}
+
+.hackathon-card__photo:hover img {
+  transform: scale(1.04);
+  filter: brightness(0.75);
+}
+
+.hackathon-card__photo:hover .hackathon-card__photo-overlay {
+  opacity: 1;
+}
+
+.hackathon-card__section {
+  margin-bottom: 16px;
+}
+
+.hackathon-card__section-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+
+.hackathon-card__section p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+.hackathon-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 16px;
+}
+
+/* reuse tag from projects */
+.project-card__tag {
+  padding: 3px 10px;
+  background: var(--surface-2);
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+}
+
+/* Lightbox */
+.hack-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  cursor: pointer;
+  animation: hack-lightbox-in 0.3s ease;
+}
+
+@keyframes hack-lightbox-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.hack-lightbox__close {
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-size: 1.2rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  z-index: 10;
+}
+
+.hack-lightbox__close:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.hack-lightbox__img {
+  max-width: 90vw;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.5);
+  animation: hack-lightbox-zoom 0.3s ease;
+}
+
+@keyframes hack-lightbox-zoom {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
