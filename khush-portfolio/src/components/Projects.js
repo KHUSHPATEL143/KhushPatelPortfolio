@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Projects.css';
 
-const CATEGORIES = ['All', 'Full Stack', 'Frontend', 'Clone', 'CLI / Tools'];
+const CATEGORIES = ['All', 'Full Stack', 'Frontend', 'Clone', 'Games', 'CLI / Tools'];
 
 const projects = [
   {

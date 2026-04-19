@@ -38,7 +38,7 @@ export default function Contact() {
   return (
     <section id="contact" className="section">
       <div className="container">
-        <div className="section-label">08 — Contact</div>
+        <div className="section-label">09 — Contact</div>
         <h2 className="section-title">Get In Touch</h2>
         <p className="section-subtitle">
           Have a project idea, freelance inquiry, or just want to say hi? My inbox is always open.

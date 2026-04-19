@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './Resume.css';
-import './Resume.css';
 
 export default function Resume() {
   const [showViewer, setShowViewer] = useState(false);
@@ -8,7 +7,7 @@ export default function Resume() {
   return (
     <section id="resume" className="section">
       <div className="container">
-        <div className="section-label">07 — Resume</div>
+        <div className="section-label">08 — Resume</div>
         <h2 className="section-title">My Resume</h2>
         <p className="section-subtitle">
           A snapshot of my skills, projects, and experience. Click below to view it directly in the browser.
@@ -74,7 +73,7 @@ export default function Resume() {
             <span className="resume__highlight-icon">🎓</span>
             <div>
               <div className="resume__highlight-title">Computer Engineering</div>
-              <div className="resume__highlight-sub">Coding Gita · 2023–2026</div>
+              <div className="resume__highlight-sub">CodingGita · 2025–2029</div>
             </div>
           </div>
         </div>

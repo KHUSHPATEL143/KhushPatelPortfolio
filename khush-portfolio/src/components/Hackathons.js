@@ -21,7 +21,7 @@ export default function Hackathons() {
   return (
     <section id="hackathons" className="section">
       <div className="container">
-        <div className="section-label">05 — Hackathons</div>
+        <div className="section-label">06 — Hackathons</div>
         <h2 className="section-title">Hackathons</h2>
         <p className="section-subtitle">
           Competitive coding events where I've built solutions under pressure and collaborated with teams.

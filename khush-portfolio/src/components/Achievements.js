@@ -57,7 +57,7 @@ export default function Achievements() {
   return (
     <section id="achievements" className="section section--alt">
       <div className="container">
-        <div className="section-label">06 — Achievements</div>
+        <div className="section-label">07 — Achievements</div>
         <h2 className="section-title">Awards & Milestones</h2>
         <p className="section-subtitle">
           Recognitions, badges, and personal milestones from my journey as a developer and entrepreneur.
