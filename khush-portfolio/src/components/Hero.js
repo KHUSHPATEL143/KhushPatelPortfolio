@@ -76,7 +76,7 @@ export default function Hero() {
             </div>
             <div className="hero__info-item">
               <span className="hero__info-label">Education</span>
-              <span>Coding Gita (2023–2026)</span>
+              <span>CodingGita (2025–2029)</span>
             </div>
             <div className="hero__info-item">
               <span className="hero__info-label">Email</span>
