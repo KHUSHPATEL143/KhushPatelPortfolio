@@ -24,7 +24,7 @@ export default function Certificates() {
   return (
     <section id="certificates" className="section section--alt">
       <div className="container">
-        <div className="section-label">05 — Certifications</div>
+        <div className="section-label">04 — Certifications</div>
         <h2 className="section-title">Certificates</h2>
         <p className="section-subtitle">
           Certifications and credentials that validate my skills and continuous learning journey.

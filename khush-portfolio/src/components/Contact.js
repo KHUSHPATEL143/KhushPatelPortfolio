@@ -1,10 +1,9 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import './Contact.css';
 
 export default function Contact() {
-  const formRef = useRef(null);
   const [form, setForm] = useState({ name: '', email: '', message: '' });
-  const [status, setStatus] = useState('idle'); // idle | sending | success | error
+  const [status, setStatus] = useState({ type: 'idle', message: '' });
 
   const handleChange = (e) => {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
@@ -14,31 +13,61 @@ export default function Contact() {
     e.preventDefault();
     if (!form.name || !form.email || !form.message) return;
 
-    setStatus('sending');
+    const serviceId = process.env.REACT_APP_EMAILJS_SERVICE_ID;
+    const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
+    const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
+    const toEmail = process.env.REACT_APP_EMAILJS_TO_EMAIL || 'khushpatel9979@gmail.com';
 
-    try {
-      // Using EmailJS — replace these with your actual IDs from emailjs.com
-      const { default: emailjs } = await import('@emailjs/browser');
-      await emailjs.sendForm(
-        'YOUR_SERVICE_ID',      // Replace with your EmailJS Service ID
-        'YOUR_TEMPLATE_ID',     // Replace with your EmailJS Template ID
-        formRef.current,
-        'YOUR_PUBLIC_KEY'       // Replace with your EmailJS Public Key
-      );
-      setStatus('success');
-      setForm({ name: '', email: '', message: '' });
-    } catch (err) {
-      console.error(err);
-      setStatus('error');
+    if (!serviceId || !templateId || !publicKey) {
+      setStatus({
+        type: 'warning',
+        message: 'EmailJS keys are not configured yet. Add the values in .env before deploying.',
+      });
+      return;
     }
 
-    setTimeout(() => setStatus('idle'), 4000);
+    setStatus({ type: 'loading', message: 'Sending your message...' });
+
+    try {
+      const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          service_id: serviceId,
+          template_id: templateId,
+          user_id: publicKey,
+          template_params: {
+            from_name: form.name,
+            from_email: form.email,
+            to_email: toEmail,
+            message: form.message,
+          },
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('EmailJS request failed');
+      }
+
+      setForm({ name: '', email: '', message: '' });
+      setStatus({
+        type: 'success',
+        message: 'Message sent successfully! Thank you for reaching out.',
+      });
+    } catch (err) {
+      setStatus({
+        type: 'error',
+        message: 'Sending failed. Please email me directly at khushpatel9979@gmail.com',
+      });
+    }
+
+    setTimeout(() => setStatus({ type: 'idle', message: '' }), 5000);
   };
 
   return (
     <section id="contact" className="section">
       <div className="container">
-        <div className="section-label">09 — Contact</div>
+        <div className="section-label">08 — Contact</div>
         <h2 className="section-title">Get In Touch</h2>
         <p className="section-subtitle">
           Have a project idea, freelance inquiry, or just want to say hi? My inbox is always open.
@@ -82,11 +111,11 @@ export default function Contact() {
           </div>
 
           {/* Right: Form */}
-          <form ref={formRef} className="contact__form card" onSubmit={handleSubmit}>
+          <form className="contact__form card" onSubmit={handleSubmit}>
             <div className="contact__field">
-              <label className="contact__label" htmlFor="name">Your Name</label>
+              <label className="contact__label" htmlFor="contact-name">Your Name</label>
               <input
-                id="name"
+                id="contact-name"
                 name="name"
                 type="text"
                 placeholder="Khush Patel"
@@ -98,9 +127,9 @@ export default function Contact() {
             </div>
 
             <div className="contact__field">
-              <label className="contact__label" htmlFor="email">Email Address</label>
+              <label className="contact__label" htmlFor="contact-email">Email Address</label>
               <input
-                id="email"
+                id="contact-email"
                 name="email"
                 type="email"
                 placeholder="you@example.com"
@@ -112,9 +141,9 @@ export default function Contact() {
             </div>
 
             <div className="contact__field">
-              <label className="contact__label" htmlFor="message">Message</label>
+              <label className="contact__label" htmlFor="contact-message">Message</label>
               <textarea
-                id="message"
+                id="contact-message"
                 name="message"
                 rows={6}
                 placeholder="Tell me about your project or just say hi..."
@@ -127,24 +156,15 @@ export default function Contact() {
 
             <button
               type="submit"
-              className={`btn btn-primary contact__submit ${status === 'sending' ? 'loading' : ''}`}
-              disabled={status === 'sending'}
+              className={`btn btn-primary contact__submit ${status.type === 'loading' ? 'loading' : ''}`}
+              disabled={status.type === 'loading'}
             >
-              {status === 'sending' && <span className="contact__spinner" />}
-              {status === 'idle' && '→ Send Message'}
-              {status === 'sending' && 'Sending...'}
-              {status === 'success' && '✓ Message Sent!'}
-              {status === 'error' && '✕ Failed — Try Again'}
+              {status.type === 'loading' ? 'Sending...' : '→ Send Message'}
             </button>
 
-            {status === 'success' && (
-              <div className="contact__feedback contact__feedback--success">
-                ✓ Thanks! I'll get back to you soon.
-              </div>
-            )}
-            {status === 'error' && (
-              <div className="contact__feedback contact__feedback--error">
-                Something went wrong. Please email me directly at khushpatel9979@gmail.com
+            {status.message && (
+              <div className={`contact__feedback contact__feedback--${status.type}`}>
+                {status.message}
               </div>
             )}
           </form>

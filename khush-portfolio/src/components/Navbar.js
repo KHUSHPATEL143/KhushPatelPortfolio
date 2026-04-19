@@ -4,7 +4,6 @@ import './Navbar.css';
 const navLinks = [
   { label: 'Skills', href: '#skills' },
   { label: 'Projects', href: '#projects' },
-  { label: 'Figma', href: '#figma' },
   { label: 'Certificates', href: '#certificates' },
   { label: 'Hackathons', href: '#hackathons' },
   { label: 'Achievements', href: '#achievements' },

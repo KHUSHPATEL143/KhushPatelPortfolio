@@ -7,7 +7,7 @@ export default function Resume() {
   return (
     <section id="resume" className="section">
       <div className="container">
-        <div className="section-label">08 — Resume</div>
+        <div className="section-label">07 — Resume</div>
         <h2 className="section-title">My Resume</h2>
         <p className="section-subtitle">
           A snapshot of my skills, projects, and experience. Click below to view it directly in the browser.

@@ -80,7 +80,7 @@ export default function SocialLinks() {
   return (
     <section id="social" className="section section--alt">
       <div className="container">
-        <div className="section-label">10 — Connect</div>
+        <div className="section-label">09 — Connect</div>
         <h2 className="section-title">Find Me Online</h2>
         <p className="section-subtitle">
           Let's connect across platforms — whether for collaboration, networking, or just saying hi.
