@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #0a0a0f;
+    color: #f0ece4;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@layer components {
+  .container-main {
+    @apply max-w-6xl mx-auto px-6;
+  }
+  .section-shell {
+    @apply py-24;
+  }
+  .card-base {
+    @apply bg-surface border border-border rounded-card p-6 transition-all duration-300;
+  }
+  .card-base:hover {
+    @apply border-accent/20;
+  }
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-6 py-3 bg-accent text-bg font-semibold rounded-xl
+           hover:bg-accent-2 transition-all duration-300 text-sm tracking-wide;
+  }
+  .btn-outline {
+    @apply inline-flex items-center gap-2 px-6 py-3 border border-border text-text rounded-xl
+           hover:border-accent hover:text-accent transition-all duration-300 text-sm tracking-wide;
+  }
+  .tag-base {
+    @apply px-3 py-1 bg-surface-2 rounded text-text-muted font-mono text-xs;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0a0a0f; }
+::-webkit-scrollbar-thumb { background: #2a2a35; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #ffaa00; }
+
+/* Lightbox */
+.cert-lightbox, .hack-lightbox {
+  @apply fixed inset-0 z-[9999] bg-black/90 backdrop-blur-lg flex items-center justify-center p-10 cursor-pointer;
+  animation: fadeIn 0.3s ease;
+}
+.cert-lightbox img, .hack-lightbox img {
+  @apply max-w-[90vw] max-h-[85vh] object-contain rounded-xl shadow-2xl;
+  animation: zoomIn 0.3s ease;
+}
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes zoomIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }

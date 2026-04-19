@@ -7,7 +7,7 @@ export default function Footer() {
         {personal.name} — Full Stack Developer
       </p>
       <p className="font-mono text-[0.7rem] text-muted tracking-wide">
-        {personal.location} · © 2025
+        {personal.location} · © 2026
       </p>
     </footer>
   )

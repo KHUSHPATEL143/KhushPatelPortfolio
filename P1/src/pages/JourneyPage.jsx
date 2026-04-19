@@ -1,0 +1,48 @@
+import { motion } from 'framer-motion';
+import { journeySteps } from '../content/profileContent';
+
+const JourneyPage = () => {
+  return (
+    <section className="px-4 pb-24 pt-32 text-white sm:px-8 xl:px-12">
+      <div className="mx-auto max-w-6xl">
+        <motion.div
+          initial={{ opacity: 0, y: 36 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
+          className="rounded-[2.75rem] border border-white/10 bg-white/[0.03] p-10 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-3xl md:p-14"
+        >
+          <p className="text-xs font-bold uppercase tracking-[0.36em] text-white/40">Journey</p>
+          <h1 className="mt-6 font-serif text-5xl font-semibold leading-[1.04] tracking-tight md:text-7xl">
+            Momentum, not just milestones.
+          </h1>
+          <p className="mt-8 max-w-3xl text-lg leading-relaxed text-white/60">
+            This route turns the portfolio timeline into a dedicated page, so the main
+            navigation now lands on actual URLs instead of in-page anchors.
+          </p>
+        </motion.div>
+
+        <div className="mt-8 grid gap-4">
+          {journeySteps.map((step, index) => (
+            <motion.article
+              key={step.title}
+              initial={{ opacity: 0, y: 28 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1, ease: 'easeOut' }}
+              className="grid gap-5 rounded-[2rem] border border-white/8 bg-white/[0.03] p-7 backdrop-blur-2xl transition hover:bg-white/[0.05] md:grid-cols-[180px_1fr]"
+            >
+              <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-cyan-200/75">
+                {step.period}
+              </p>
+              <div>
+                <p className="text-2xl font-medium text-white">{step.title}</p>
+                <p className="mt-3 max-w-3xl text-base leading-8 text-white/52">{step.body}</p>
+              </div>
+            </motion.article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default JourneyPage;

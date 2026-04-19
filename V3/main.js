@@ -118,17 +118,13 @@ function initNavbar() {
         });
     });
 
-    // Smooth scroll with GSAP if available
+    // Use native smooth scrolling so navigation does not depend on ScrollToPlugin.
     items.forEach(a => {
         a.addEventListener('click', e => {
             e.preventDefault();
             const target = document.querySelector(a.getAttribute('href'));
             if (!target) return;
-            if (window.gsap) {
-                gsap.to(window, { duration: 1, scrollTo: { y: target, offsetY: 80 }, ease: 'power3.inOut' });
-            } else {
-                target.scrollIntoView({ behavior: 'smooth' });
-            }
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             document.getElementById('navMenu').classList.remove('active');
             document.getElementById('burger').classList.remove('active');
         });
@@ -137,11 +133,7 @@ function initNavbar() {
     // Logo scroll to top
     document.getElementById('logoLink')?.addEventListener('click', e => {
         e.preventDefault();
-        if (window.gsap) {
-            gsap.to(window, { duration: 1, scrollTo: 0, ease: 'power3.inOut' });
-        } else {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 }
 

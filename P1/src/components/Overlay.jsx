@@ -1,46 +1,6 @@
+import { Link } from 'react-router-dom';
 import { useScroll, useTransform, motion } from 'framer-motion';
-
-const technicalSkills = [
-    {
-        category: "Frontend Systems",
-        summary: "Interfaces that feel intentional, fast, and expressive on both web and mobile.",
-        items: ["React", "JavaScript", "CSS3", "Tailwind", "Flutter", "Framer Motion"],
-    },
-    {
-        category: "Backend Logic",
-        summary: "Application flows built around clean APIs, reliable data handling, and practical deployment.",
-        items: ["Node.js", "Express", "Python", "REST APIs", "Supabase", "Firebase"],
-    },
-    {
-        category: "Workflow & Data",
-        summary: "Tooling for shipping, debugging, collaborating, and keeping product work maintainable.",
-        items: ["MongoDB", "SQLite", "Git", "Figma", "Linux", "n8n"],
-    }
-];
-
-const collaborationPillars = [
-    "Motion-led UI that still feels usable",
-    "Practical product thinking over visual noise",
-    "Full-stack execution from concept to deployment",
-];
-
-const journeySteps = [
-    {
-        period: "2025 - Present",
-        title: "B.Tech in Computer Science",
-        body: "Growing a strong engineering foundation while building real products outside the classroom at the same time.",
-    },
-    {
-        period: "Current Focus",
-        title: "Shipping at CodingGita",
-        body: "Using iteration as leverage: prototype, test, refine, and keep raising the quality bar with each release.",
-    },
-    {
-        period: "Client Work",
-        title: "Freelance Development at VayuWebs",
-        body: "Contributing to production-facing tools and dashboards where performance, reliability, and usability all matter.",
-    },
-];
+import { collaborationPillars, journeySteps, technicalSkills } from '../content/profileContent';
 
 const Section = ({
     range,
@@ -106,9 +66,9 @@ const Overlay = () => {
                         </div>
 
                         <div className="mt-10 flex flex-wrap gap-4">
-                            <a href="#selected-work" data-cursor="bubble" className="pointer-events-auto rounded-full bg-white px-8 py-4 text-sm font-bold uppercase tracking-[0.2em] text-black shadow-[0_0_40px_rgba(255,255,255,0.1)] transition-transform duration-300 hover:scale-105">
+                            <Link to="/projects" data-cursor="bubble" className="pointer-events-auto rounded-full bg-white px-8 py-4 text-sm font-bold uppercase tracking-[0.2em] text-black shadow-[0_0_40px_rgba(255,255,255,0.1)] transition-transform duration-300 hover:scale-105">
                                 View Projects
-                            </a>
+                            </Link>
                             <a href="https://mail.google.com/mail/?view=cm&fs=1&to=khushpatel9979@gmail.com" target="_blank" rel="noreferrer" data-cursor="bubble" className="pointer-events-auto rounded-full border border-white/10 bg-white/[0.02] px-8 py-4 text-sm font-bold uppercase tracking-[0.2em] text-white backdrop-blur-xl transition-all duration-300 hover:bg-white/[0.08]">
                                 Contact Me
                             </a>

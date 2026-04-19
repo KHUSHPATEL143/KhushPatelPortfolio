@@ -1,49 +1,20 @@
 import { useEffect } from 'react';
-import { BrowserRouter as Router, Link, Route, Routes, useLocation } from 'react-router-dom';
 import Lenis from 'lenis';
+import {
+  createBrowserRouter,
+  Link,
+  Outlet,
+  RouterProvider,
+  ScrollRestoration,
+} from 'react-router-dom';
 import CustomCursor from './components/CustomCursor';
 import Navbar from './components/Navbar';
-import Projects from './components/Projects';
-import ScrollyCanvas from './components/ScrollyCanvas';
-
-function Home() {
-  return (
-    <>
-      <ScrollyCanvas />
-      <Projects />
-    </>
-  );
-}
-
-function RouteEffects() {
-  const location = useLocation();
-
-  useEffect(() => {
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const frameId = requestAnimationFrame(() => {
-      const runScroll = () => {
-        if (location.hash) {
-          const target = document.querySelector(location.hash);
-          if (target) {
-            target.scrollIntoView({
-              behavior: prefersReducedMotion ? 'auto' : 'smooth',
-              block: 'start',
-            });
-            return;
-          }
-        }
-
-        window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
-      };
-
-      requestAnimationFrame(runScroll);
-    });
-
-    return () => cancelAnimationFrame(frameId);
-  }, [location.hash, location.pathname]);
-
-  return null;
-}
+import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage';
+import JourneyPage from './pages/JourneyPage';
+import StackPage from './pages/StackPage';
+import ProjectsPage from './pages/ProjectsPage';
+import ContactPage from './pages/ContactPage';
 
 function NotFound() {
   return (
@@ -54,7 +25,8 @@ function NotFound() {
           This route wandered off.
         </h1>
         <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-white/60">
-          The page you tried to open does not exist yet, but the portfolio home and project archive are ready to explore.
+          The page you tried to open does not exist yet, but the main portfolio,
+          project archive, and contact route are ready to explore.
         </p>
         <div className="mt-10 flex flex-wrap justify-center gap-4">
           <Link
@@ -75,7 +47,7 @@ function NotFound() {
   );
 }
 
-function AppShell() {
+function AppLayout() {
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
     if (mediaQuery.matches) {
@@ -105,43 +77,39 @@ function AppShell() {
 
   return (
     <>
-      <RouteEffects />
+      <ScrollRestoration />
       <a href="#content" className="skip-link">
         Skip to content
       </a>
       <main className="min-h-screen bg-background text-white">
         <CustomCursor />
         <Navbar />
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <div id="content">
-                <Home />
-              </div>
-            }
-          />
-          <Route
-            path="/projects"
-            element={
-              <div id="content" className="pt-32">
-                <Projects />
-              </div>
-            }
-          />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <div id="content">
+          <Outlet />
+        </div>
       </main>
     </>
   );
 }
 
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <AppLayout />,
+    children: [
+      { index: true, element: <HomePage /> },
+      { path: 'about', element: <AboutPage /> },
+      { path: 'journey', element: <JourneyPage /> },
+      { path: 'stack', element: <StackPage /> },
+      { path: 'projects', element: <ProjectsPage /> },
+      { path: 'contact', element: <ContactPage /> },
+      { path: '*', element: <NotFound /> },
+    ],
+  },
+]);
+
 function App() {
-  return (
-    <Router>
-      <AppShell />
-    </Router>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

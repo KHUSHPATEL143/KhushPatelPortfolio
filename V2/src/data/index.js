@@ -37,12 +37,12 @@ export const skills = [
 export const projects = [
   {
     num: '01',
-    tag: 'Desktop App',
-    title: 'Ecotouch Dashboard',
+    tag: 'Web App',
+    title: 'ECC Frontend',
     desc:
-      'Production management system for factories — inventory tracking, attendance, production batches and reporting with Excel/PDF export. Built for real-world factory operations.',
-    stack: ['Flutter', 'Riverpod', 'SQLite', 'Windows'],
-    link: 'https://github.com/KHUSHPATEL143',
+      'Frontend for ECC focused on a clean interface, modern interactions, and a polished user experience.',
+    stack: ['React', 'JavaScript', 'CSS', 'Frontend'],
+    link: 'https://github.com/KHUSHPATEL143/ECC-frontend',
   },
   {
     num: '02',
