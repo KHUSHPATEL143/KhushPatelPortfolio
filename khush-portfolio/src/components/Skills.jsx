@@ -10,8 +10,8 @@ const techBadges = ['React.js','Node.js','Express.js','MongoDB','Supabase','Java
 
 function SkillBar({ name, level, animate }) {
   return (
-    <div className="mb-4">
-      <div className="flex justify-between mb-1.5">
+    <div className="mb-5">
+      <div className="flex justify-between mb-2">
         <span className="text-text text-sm">{name}</span>
         <span className="font-mono text-xs text-text-dim">{level}%</span>
       </div>
@@ -39,7 +39,7 @@ export default function Skills() {
         <h2 className="font-display text-4xl font-extrabold text-text mb-3">Technical Arsenal</h2>
         <p className="text-text-muted max-w-xl mb-12">A mix of languages, frameworks, and tools I've worked with during my studies and projects.</p>
 
-        <div className="grid md:grid-cols-3 gap-6 mb-16">
+        <div className="grid md:grid-cols-3 gap-8 mb-16">
           {skillGroups.map(g => (
             <div key={g.category} className="card-base p-6">
               <div className="flex items-center gap-3 mb-6">

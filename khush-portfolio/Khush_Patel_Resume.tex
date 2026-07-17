@@ -1,0 +1,210 @@
+%-------------------------
+% Resume: Khush Patel — Exact Ammar Meman layout
+%-------------------------
+\documentclass[letterpaper,10pt]{article}
+
+\usepackage[empty]{fullpage}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{geometry}
+\usepackage{array}
+\usepackage{fontawesome5}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{paracol}
+\usepackage{microtype}
+\input{glyphtounicode}
+
+\geometry{
+  top=0.35in,
+  bottom=0.35in,
+  left=0.38in,
+  right=0.38in
+}
+
+\pagestyle{empty}
+\urlstyle{same}
+\pdfgentounicode=1
+
+% Section title style — small caps + rule, like Ammar
+\titleformat{\section}{
+  \vspace{-8pt}\small\bfseries\scshape\raggedright
+}{}{0em}{}[\vspace{-2pt}\rule{\linewidth}{0.4pt}\vspace{-4pt}]
+
+\setlist[itemize]{leftmargin=*, itemsep=0pt, topsep=1pt, parsep=0pt}
+
+%============================================================
+\begin{document}
+
+%----------HEADING----------
+\noindent
+\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+  \textbf{\Huge KHUSH PATEL} & Phone: +91 9409223427 \\
+  \textit{FULL STACK DEVELOPER \& SOFTWARE ENGINEER} & Email: \href{mailto:khushpatel9979@gmail.com}{khushpatel9979@gmail.com} \\
+  & Location: Ahmedabad, Gujarat, India \\
+\end{tabular*}
+
+\vspace{2pt}
+\noindent\hrule
+\vspace{2pt}
+
+% Social links row
+\noindent
+\begin{tabular*}{\textwidth}{l@{\hspace{18pt}}l@{\hspace{18pt}}l@{\hspace{18pt}}l}
+  \href{https://linkedin.com/in/khushpatel9979}{\underline{LinkedIn}} &
+  \href{https://github.com/KHUSHPATEL143}{\underline{Github}} &
+  \href{https://khushpatel.online}{\underline{Portfolio}} &
+  \href{https://leetcode.com/u/nOx8HAyDTE/}{\underline{LeetCode}} \\
+\end{tabular*}
+
+\vspace{2pt}
+\noindent\hrule
+\vspace{4pt}
+
+%----------TWO-COLUMN BODY (LEFT 36% | RIGHT 64%)----------
+\setlength{\columnsep}{14pt}
+\columnratio{0.36}
+\begin{paracol}{2}
+
+%==========================
+% LEFT COLUMN
+%==========================
+
+\section{Skills}
+
+\textbf{Languages \& Frameworks} \\
+\small JavaScript (ES6+), TypeScript, C++, React.js, Next.js, Node.js, Tailwind CSS, HTML5, CSS3 \par
+
+\vspace{5pt}
+\textbf{Databases \& Backend} \\
+\small MongoDB, Supabase, REST APIs, Express.js \par
+
+\vspace{5pt}
+\textbf{Deployment} \\
+\small Vercel, Netlify, Render \par
+
+\vspace{5pt}
+\textbf{Tools \& Platforms} \\
+\small Postman, Figma, N8N, VS Code, npm, Git, GitHub \par
+
+\vspace{5pt}
+\textbf{AI \& Automation} \\
+\small Gemini API, N8N Workflow Automation \par
+
+\vspace{6pt}
+
+\section{Hackathons \& Awards}
+
+\textbf{1. CodingGita Hackathon} \\
+\small \textbf{Winner (1st Rank)} \hfill \textit{June 2026} \\
+\small Built \textbf{Lakshya} — an AI browser companion that reduces context switching by allowing users to chat with the current page, summarize content, analyze PDFs, and explain code inside the active tab. \par
+
+\vspace{5pt}
+\textbf{2. OceanLab x CHARUSAT} \\
+\small \textbf{Finalist (among 250+ teams)} \hfill \textit{Apr 2026} \\
+\small Built \textbf{IdeaForge} — MERN SaaS workspace. Selected for an interview round by OceanLab, declined to stay focused on the development journey. \par
+
+\vspace{5pt}
+\textbf{3. DAIICT Hackathon} \hfill \textit{2026} \\
+\small Participated with \textbf{Talentra} — a multi-agent resume intelligence and candidate-job matching platform. \par
+
+\vspace{5pt}
+\textbf{4. SU Hackathon} \hfill \textit{2026} \\
+\small Participated with \textbf{Electrosphere} Face Recognition backend and Flask API embedding generator. \par
+
+\vspace{6pt}
+
+\section{Certifications}
+
+\textbf{Software Engineering Simulations} \par
+\vspace{2pt}
+\small Walmart Adv. Software Eng. \\
+\small AWS Solutions Architecture \\
+\small AI Workplace Simulation \\
+\small SoloLearn — JavaScript Advanced \par
+
+\vspace{5pt}
+\textbf{Hackathon Participations} \par
+\vspace{2pt}
+\small ArtPark CodeForge (IISc) \\
+\small Synaptix AI (IIT Madras) \\
+\small Singularity AI (IIT Dharwad) \\
+\small HACKSAGON (IIITM) \\
+\small Dev Heat (IIIT Surat) \\
+\small Odoo x Adani Hackathon \\
+\small Elite Hack 1.0 \quad Bitathon (GIM Goa) \par
+
+%==========================
+% RIGHT COLUMN
+%==========================
+\switchcolumn
+
+\section{Education}
+
+\noindent\textbf{Swaminarayan University, Kalol} \hfill \textit{2025--2029} \\
+\small BE in Computer Engineering \enspace | \enspace Sem 1: 9.33 SGPA \par
+
+\vspace{4pt}
+\noindent\textbf{Glorious Public School} \hfill \textit{2025 / 2023} \\
+\small Higher Secondary (12th) \enspace \& \enspace Secondary Education (10th) \par
+
+\vspace{6pt}
+
+\section{Professional Summary}
+
+\small Computer Engineering student and Full-Stack Developer who learns fast and builds faster. Proficient in JavaScript, React.js, Node.js, and MongoDB, with hands-on experience shipping production-grade applications and AI-integrated products. Sharp problem-solving instincts built through consistent DSA practice and multiple national-level hackathon participations. Always focused on writing clean code, building intuitive interfaces, and delivering things that actually work. \par
+
+\vspace{6pt}
+
+\section{Experience}
+
+\noindent\textbf{Full-Stack Developer (Independent / Hackathons)} \\
+\small 2025 -- Present \enspace | \enspace Self-Employed \par
+\vspace{2pt}
+\begin{itemize}
+  \item \small Engineered \textbf{5+ full-stack web applications} using React.js, Node.js, Express.js \& MongoDB, each deployed to production.
+  \item \small Developed \textbf{10+ scalable RESTful API endpoints} with JWT authentication, optimizing database queries for performance.
+  \item \small Built \textbf{5+ automation projects} using N8N and AI APIs, streamlining client workflows end-to-end.
+  \item \small Solving Data Structures and Algorithms problems on LeetCode — arrays, strings, trees, and graph patterns.
+  \item \small Architected a full-stack educational management platform with role-based access for teachers and students.
+  \item \small Implemented real-time analytics dashboard to track student attendance and performance metrics.
+  \item \small Engineered a GitHub profile explorer with real-time API integration and light/dark theme toggle.
+  \item \small Shipped IdeaForge — an AI startup workspace — within a 48-hour hackathon at CHARUSAT.
+\end{itemize}
+
+\vspace{6pt}
+
+\section{Projects}
+
+\noindent\textbf{1. IdeaForge} \hfill \href{https://crmideaforge.onrender.com}{\small\underline{Live}} \enspace \href{https://github.com/KHUSHPATEL143/ideaForge}{\small\underline{Github}}
+\begin{itemize}
+  \item \small AI-powered startup workspace — idea scoring, role-based teams, task \& finance tracking, Gmail \& Calendar integration, team chat, and a natural-language Command Centre.
+  \item \small Built with Next.js and Supabase; deployed and production-ready.
+\end{itemize}
+
+\vspace{4pt}
+\noindent\textbf{2. ECC Frontend} \hfill \href{https://ecc-gamma.vercel.app/}{\small\underline{Live}} \enspace \href{https://github.com/KHUSHPATEL143/ECC-frontend}{\small\underline{Github}}
+\begin{itemize}
+  \item \small Investment club dashboard focusing on polished UI flows, installment tracking, and admin workflows.
+  \item \small Built with React, Vite, Tailwind CSS, and Recharts.
+\end{itemize}
+
+\vspace{4pt}
+\noindent\textbf{3. Vrestro} \hfill \href{https://restaurant-oc42.vercel.app/}{\small\underline{Live}} \enspace \href{https://github.com/KHUSHPATEL143/Vrestro}{\small\underline{Github}}
+\begin{itemize}
+  \item \small Restaurant ordering system handling customer ordering, manager operations, kitchen display, and inventory.
+  \item \small Built with a React frontend and Node/Express backend.
+\end{itemize}
+
+\vspace{4pt}
+\noindent\textbf{4. Projects \& Clones Collection} \hfill \href{https://projectsandclone.vercel.app/}{\small\underline{Live}} \enspace \href{https://github.com/KHUSHPATEL143/Projects_and-_CloneinHTML-CSS-JS}{\small\underline{Github}}
+\begin{itemize}
+  \item \small 5+ pixel-perfect frontend clones using CSS Grid and Flexbox; semantic HTML, responsive design, cross-browser compatible.
+\end{itemize}
+
+\end{paracol}
+
+\end{document}
