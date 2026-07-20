@@ -35,10 +35,10 @@ const achievements = [
   },
   {
     id: 5,
-    icon: 'AG',
-    title: 'Freelance Digital Agency Founder',
-    description: 'Founded a freelance digital agency delivering MERN-based web solutions to real clients.',
-    category: 'Entrepreneurship',
+    icon: 'FL',
+    title: 'Active Freelance Developer',
+    description: 'Delivering custom MERN-based web solutions and automation tools directly to clients.',
+    category: 'Freelance',
     color: '#ff6b35',
   },
   {

@@ -15,7 +15,7 @@ export default function Resume() {
             <div className="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center text-xl">📄</div>
             <div>
               <div className="font-display font-bold text-text text-sm">Khush_Patel_Resume.pdf</div>
-              <div className="font-mono text-xs text-text-dim">Full Stack Developer · MERN Stack · Agency Founder</div>
+              <div className="font-mono text-xs text-text-dim">Full Stack Developer · MERN Stack · Freelance Developer</div>
             </div>
           </div>
           <button className="btn-primary" onClick={() => setShowViewer(!showViewer)}>
@@ -36,7 +36,7 @@ export default function Resume() {
         <div className="grid md:grid-cols-3 gap-4">
           {[
             ['⚡', 'Full Stack Developer', 'MERN Stack · TypeScript · REST APIs'],
-            ['🏢', 'Agency Founder', 'Freelance web solutions for clients'],
+            ['💻', 'Freelance Developer', 'Freelance web solutions for clients'],
             ['🎓', 'Computer Engineering', 'CodingGita · 2025–2029'],
           ].map(([icon, title, sub]) => (
             <div key={title} className="card-base p-5 flex items-center gap-4">

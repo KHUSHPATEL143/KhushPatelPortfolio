@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 
-const ROLES = ['Full Stack Developer', 'MERN Stack Developer', 'Agency Founder', 'Computer Engineering Student'];
+const ROLES = ['Full Stack Developer', 'MERN Stack Developer', 'Freelance Developer', 'Computer Engineering Student'];
 
 export default function Hero() {
   const roleRef = useRef(null);
@@ -62,7 +62,7 @@ export default function Hero() {
 
           <p className="text-text-muted text-base leading-7 max-w-lg mb-8">
             Motivated Computer Engineering student and Full-Stack Developer with hands-on experience building
-            production-grade <strong className="text-text font-medium">MERN Stack</strong> applications. Founder of a freelance digital agency
+            production-grade <strong className="text-text font-medium">MERN Stack</strong> applications. Freelancer
             delivering scalable web solutions across Gujarat, India.
           </p>
 
@@ -108,7 +108,7 @@ export default function Hero() {
           </div>
 
           <div className="flex gap-8">
-            {[['6+', 'Projects Built'], ['MERN', 'Stack Expert'], ['1', 'Agency Founded']].map(([num, label]) => (
+            {[["6+", "Projects Built"], ["MERN", "Stack Expert"], ["Freelance", "Developer"]].map(([num, label]) => (
               <div key={label} className="text-center">
                 <span className="block font-display text-3xl font-extrabold text-accent leading-none">{num}</span>
                 <span className="font-mono text-[0.65rem] tracking-widest uppercase text-text-dim">{label}</span>
