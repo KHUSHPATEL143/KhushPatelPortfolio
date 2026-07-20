@@ -87,6 +87,84 @@ const techBadges = [
   'N8N Workflow Automation'
 ];
 
+function SkillIcon({ name }) {
+  const normName = name.toLowerCase();
+
+  // Custom SVGs for skills not in Devicon or needing custom look
+  if (normName.includes('supabase')) {
+    return (
+      <svg viewBox="0 0 24 24" className="w-5 h-5 fill-[#3ECF8E]">
+        <path d="M12 2L2 12h8v10l10-10h-8z"/>
+      </svg>
+    );
+  }
+  if (normName.includes('rest api')) {
+    return (
+      <svg viewBox="0 0 24 24" className="w-5 h-5 stroke-accent fill-none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="2" y="2" width="20" height="8" rx="2" ry="2" />
+        <rect x="2" y="14" width="20" height="8" rx="2" ry="2" />
+        <line x1="6" y1="6" x2="6.01" y2="6" />
+        <line x1="6" y1="18" x2="6.01" y2="18" />
+      </svg>
+    );
+  }
+  if (normName.includes('render')) {
+    return (
+      <svg viewBox="0 0 24 24" className="w-5 h-5 stroke-accent-2 fill-none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
+      </svg>
+    );
+  }
+  if (normName.includes('gemini')) {
+    return (
+      <svg viewBox="0 0 24 24" className="w-5 h-5 fill-accent animate-pulse">
+        <path d="M12 2L14.7 9.3L22 12L14.7 14.7L12 22L9.3 14.7L2 12L9.3 9.3L12 2Z" />
+      </svg>
+    );
+  }
+  if (normName.includes('n8n')) {
+    return (
+      <svg viewBox="0 0 24 24" className="w-5 h-5 stroke-accent fill-none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="18" cy="5" r="3" />
+        <circle cx="6" cy="12" r="3" />
+        <circle cx="18" cy="19" r="3" />
+        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
+        <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
+      </svg>
+    );
+  }
+
+  // Devicon mappings
+  let iconClass = '';
+  if (normName.includes('javascript')) iconClass = 'devicon-javascript-plain colored';
+  else if (normName.includes('typescript')) iconClass = 'devicon-typescript-plain colored';
+  else if (normName.includes('react')) iconClass = 'devicon-react-original colored';
+  else if (normName.includes('next')) iconClass = 'devicon-nextjs-original';
+  else if (normName.includes('node')) iconClass = 'devicon-nodejs-plain colored';
+  else if (normName.includes('tailwind')) iconClass = 'devicon-tailwindcss-plain colored';
+  else if (normName.includes('c++')) iconClass = 'devicon-cplusplus-plain colored';
+  else if (normName.includes('html/css')) iconClass = 'devicon-html5-plain colored';
+  else if (normName.includes('mongodb')) iconClass = 'devicon-mongodb-plain colored';
+  else if (normName.includes('express')) iconClass = 'devicon-express-original';
+  else if (normName.includes('vercel')) iconClass = 'devicon-vercel-original';
+  else if (normName.includes('netlify')) iconClass = 'devicon-netlify-plain colored';
+  else if (normName.includes('git')) iconClass = 'devicon-git-plain colored';
+  else if (normName.includes('postman')) iconClass = 'devicon-postman-plain colored';
+  else if (normName.includes('figma')) iconClass = 'devicon-figma-plain colored';
+  else if (normName.includes('vscode') || normName.includes('vs code')) iconClass = 'devicon-vscode-plain colored';
+
+  if (iconClass) {
+    return <i className={`${iconClass} text-2xl transition-transform duration-300 group-hover:scale-110`} />;
+  }
+
+  // Generic fallback code icon
+  return (
+    <svg viewBox="0 0 24 24" className="w-5 h-5 stroke-text-muted fill-none" strokeWidth="2">
+      <path d="M16 18l6-6-6-6M8 6L2 12l6 6" />
+    </svg>
+  );
+}
+
 function RadialSkill({ name, level, animate }) {
   const radius = 26;
   const circumference = 2 * Math.PI * radius; // ~163.36
@@ -117,10 +195,10 @@ function RadialSkill({ name, level, animate }) {
             strokeLinecap="round"
           />
         </svg>
-        {/* Centered Percentage */}
-        <span className="font-mono text-[10px] font-bold text-text-muted group-hover:text-accent transition-colors duration-300">
-          {level}%
-        </span>
+        {/* Centered Logo inside the circle */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <SkillIcon name={name} />
+        </div>
       </div>
       <span className="text-[10px] font-mono tracking-wide text-text-muted text-center truncate max-w-[80px] group-hover:text-text transition-colors duration-300">
         {name}
