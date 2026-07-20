@@ -22,8 +22,10 @@ const skillGroups = [
     skills: [
       { name: 'MongoDB', level: 82 },
       { name: 'Supabase', level: 75 },
+      { name: 'Firebase', level: 80 },
       { name: 'REST APIs', level: 85 },
-      { name: 'Express.js', level: 83 }
+      { name: 'Express.js', level: 83 },
+      { name: 'Auth (JWT/OAuth)', level: 85 }
     ],
     className: 'md:col-span-1'
   },
@@ -71,8 +73,10 @@ const techBadges = [
   'CSS3',
   'MongoDB',
   'Supabase',
+  'Firebase',
   'REST APIs',
   'Express.js',
+  'Auth (JWT/OAuth)',
   'Vercel',
   'Netlify',
   'Render',
@@ -95,6 +99,21 @@ function SkillIcon({ name }) {
     return (
       <svg viewBox="0 0 24 24" className="w-5 h-5 fill-[#3ECF8E]">
         <path d="M12 2L2 12h8v10l10-10h-8z"/>
+      </svg>
+    );
+  }
+  if (normName.includes('firebase')) {
+    return (
+      <svg viewBox="0 0 24 24" className="w-5 h-5 fill-[#FFCA28]">
+        <path d="M3.89 15.55L5.67 4.31a.5.5 0 0 1 .86-.29l3.05 3.05zm14.15-5.91L15.3 4.1a.5.5 0 0 0-.84-.06l-4.57 7.82zm1.61 6.54L16.27 8.24l-3.32 5.69 5.86 3.32a.5.5 0 0 0 .84-.37zM4.78 17.58l6.39 3.63a.5.5 0 0 0 .5 0l6.39-3.63-2.61-15.03L4.78 17.58z"/>
+      </svg>
+    );
+  }
+  if (normName.includes('auth') || normName.includes('authentication')) {
+    return (
+      <svg viewBox="0 0 24 24" className="w-5 h-5 stroke-[#ffaa00] fill-none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+        <path d="M7 11V7a5 5 0 0 1 10 0v4" />
       </svg>
     );
   }
@@ -187,8 +206,8 @@ function RadialSkill({ name, level, animate }) {
   const strokeOffset = circumference - (circumference * level) / 100;
 
   return (
-    <div className="flex flex-col items-center justify-center p-4 rounded-2xl bg-surface-2/15 border border-border hover:border-accent/15 transition-all duration-300 hover:bg-surface-2/30 hover:scale-[1.03] group select-none">
-      <div className="relative w-14 h-14 mb-3 flex items-center justify-center">
+    <div className="flex flex-col items-center justify-center w-[92px] h-[115px] p-2 rounded-2xl bg-surface-2/15 border border-border hover:border-accent/15 transition-all duration-300 hover:bg-surface-2/30 hover:scale-[1.03] group select-none">
+      <div className="relative w-14 h-14 mb-2.5 flex items-center justify-center">
         {/* Track Circle */}
         <svg className="w-full h-full transform -rotate-90 absolute" viewBox="0 0 64 64">
           <circle
@@ -216,7 +235,7 @@ function RadialSkill({ name, level, animate }) {
           <SkillIcon name={name} />
         </div>
       </div>
-      <span className="text-[11px] font-mono tracking-wide text-text-muted text-center truncate max-w-[85px] group-hover:text-text transition-colors duration-300">
+      <span className="text-[10px] font-mono tracking-wide text-text-muted text-center leading-snug max-w-[80px] break-words group-hover:text-text transition-colors duration-300">
         {name}
       </span>
     </div>
@@ -260,7 +279,7 @@ export default function Skills() {
                 <span className="text-2xl">{g.icon}</span>
                 <h3 className="font-display text-md font-bold text-text tracking-wide">{g.category}</h3>
               </div>
-              <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-3 lg:grid-cols-4 gap-3">
+              <div className="flex flex-wrap gap-3.5 justify-start">
                 {g.skills.map(s => (
                   <RadialSkill key={s.name} {...s} animate={visible} />
                 ))}
