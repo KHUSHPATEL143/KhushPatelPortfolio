@@ -124,12 +124,29 @@ function SkillIcon({ name }) {
   }
   if (normName.includes('n8n')) {
     return (
-      <svg viewBox="0 0 24 24" className="w-5 h-5 stroke-accent fill-none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="18" cy="5" r="3" />
-        <circle cx="6" cy="12" r="3" />
-        <circle cx="18" cy="19" r="3" />
-        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
-        <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
+      <svg viewBox="0 0 24 24" className="w-[22px] h-[22px] fill-none stroke-[#e24c70]" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="4" cy="12" r="2.5" />
+        <circle cx="11" cy="12" r="2.5" />
+        <line x1="6.5" y1="12" x2="8.5" y2="12" />
+        <path d="M13.5 12h2c1.5 0 2-3.5 3.5-3.5h1.5" />
+        <path d="M13.5 12h2c1.5 0 2 3.5 3.5 3.5h0.5" />
+        <circle cx="20.5" cy="8.5" r="2.5" />
+        <circle cx="19.5" cy="15.5" r="2.5" />
+      </svg>
+    );
+  }
+  if (normName.includes('next')) {
+    return (
+      <svg viewBox="0 0 180 180" className="w-5 h-5 fill-none">
+        <circle cx="90" cy="90" r="90" className="fill-black" />
+        <path d="M140 142L72 55v87H57V38h15l68 87V38h15v104z" className="fill-white" />
+        <path d="M125 125l-45-58v58h-8V65l53 68v-8z" fill="url(#next-linear)" />
+        <defs>
+          <linearGradient id="next-linear" x1="109" y1="116.5" x2="144.5" y2="160" gradientUnits="userSpaceOnUse">
+            <stop stopColor="#fff" />
+            <stop offset="1" stopColor="#fff" stopOpacity="0" />
+          </linearGradient>
+        </defs>
       </svg>
     );
   }
@@ -139,7 +156,6 @@ function SkillIcon({ name }) {
   if (normName.includes('javascript')) iconClass = 'devicon-javascript-plain colored';
   else if (normName.includes('typescript')) iconClass = 'devicon-typescript-plain colored';
   else if (normName.includes('react')) iconClass = 'devicon-react-original colored';
-  else if (normName.includes('next')) iconClass = 'devicon-nextjs-original';
   else if (normName.includes('node')) iconClass = 'devicon-nodejs-plain colored';
   else if (normName.includes('tailwind')) iconClass = 'devicon-tailwindcss-plain colored';
   else if (normName.includes('c++')) iconClass = 'devicon-cplusplus-plain colored';
@@ -171,8 +187,8 @@ function RadialSkill({ name, level, animate }) {
   const strokeOffset = circumference - (circumference * level) / 100;
 
   return (
-    <div className="flex flex-col items-center justify-center p-3 rounded-2xl bg-surface-2/15 border border-border hover:border-accent/15 transition-all duration-300 hover:bg-surface-2/30 hover:scale-[1.03] group select-none">
-      <div className="relative w-14 h-14 mb-2 flex items-center justify-center">
+    <div className="flex flex-col items-center justify-center p-4 rounded-2xl bg-surface-2/15 border border-border hover:border-accent/15 transition-all duration-300 hover:bg-surface-2/30 hover:scale-[1.03] group select-none">
+      <div className="relative w-14 h-14 mb-3 flex items-center justify-center">
         {/* Track Circle */}
         <svg className="w-full h-full transform -rotate-90 absolute" viewBox="0 0 64 64">
           <circle
@@ -200,7 +216,7 @@ function RadialSkill({ name, level, animate }) {
           <SkillIcon name={name} />
         </div>
       </div>
-      <span className="text-[10px] font-mono tracking-wide text-text-muted text-center truncate max-w-[80px] group-hover:text-text transition-colors duration-300">
+      <span className="text-[11px] font-mono tracking-wide text-text-muted text-center truncate max-w-[85px] group-hover:text-text transition-colors duration-300">
         {name}
       </span>
     </div>
