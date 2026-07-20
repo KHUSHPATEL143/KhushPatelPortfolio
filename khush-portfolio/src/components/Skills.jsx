@@ -279,7 +279,7 @@ export default function Skills() {
                 <span className="text-2xl">{g.icon}</span>
                 <h3 className="font-display text-md font-bold text-text tracking-wide">{g.category}</h3>
               </div>
-              <div className="flex flex-wrap gap-3.5 justify-start">
+              <div className="flex flex-wrap gap-3.5 justify-center">
                 {g.skills.map(s => (
                   <RadialSkill key={s.name} {...s} animate={visible} />
                 ))}
