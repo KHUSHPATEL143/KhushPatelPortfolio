@@ -5,14 +5,24 @@ export default function Footer() {
   const [views, setViews] = useState(null);
 
   useEffect(() => {
-    fetch('https://abacus.jasoncameron.dev/hit/khushpatel143/portfolio')
+    let isMounted = true;
+    const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+    const url = isLocal 
+      ? 'https://abacus.jasoncameron.dev/get/khushpatel143/portfolio' 
+      : 'https://abacus.jasoncameron.dev/hit/khushpatel143/portfolio';
+
+    fetch(url)
       .then(res => res.json())
       .then(data => {
-        if (data && typeof data.value === 'number') {
+        if (isMounted && data && typeof data.value === 'number') {
           setViews(data.value);
         }
       })
       .catch(err => console.error('Error fetching view count:', err));
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   return (
