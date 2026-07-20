@@ -1,12 +1,86 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 const skillGroups = [
-  { category: 'Frontend', icon: '⚡', skills: [{ name: 'React.js', level: 90 }, { name: 'JavaScript (ES6+)', level: 88 }, { name: 'HTML5', level: 90 }, { name: 'CSS3', level: 85 }] },
-  { category: 'Backend & Database', icon: '🔧', skills: [{ name: 'Node.js', level: 85 }, { name: 'Express.js', level: 83 }, { name: 'MongoDB', level: 82 }, { name: 'Supabase', level: 75 }] },
-  { category: 'Languages & Tools', icon: '🛠', skills: [{ name: 'TypeScript', level: 78 }, { name: 'C++', level: 80 }, { name: 'Java', level: 75 }, { name: 'Git & GitHub', level: 88 }] },
+  {
+    category: 'Languages & Frameworks',
+    icon: '💻',
+    skills: [
+      { name: 'JavaScript (ES6+)', level: 88 },
+      { name: 'TypeScript', level: 78 },
+      { name: 'React.js', level: 90 },
+      { name: 'Next.js', level: 85 },
+      { name: 'Node.js', level: 85 },
+      { name: 'Tailwind CSS', level: 88 },
+      { name: 'C++', level: 80 },
+      { name: 'HTML5 & CSS3', level: 90 }
+    ]
+  },
+  {
+    category: 'Databases & Backend',
+    icon: '🗄️',
+    skills: [
+      { name: 'MongoDB', level: 82 },
+      { name: 'Supabase', level: 75 },
+      { name: 'REST APIs', level: 85 },
+      { name: 'Express.js', level: 83 }
+    ]
+  },
+  {
+    category: 'Deployment',
+    icon: '🚀',
+    skills: [
+      { name: 'Vercel', level: 85 },
+      { name: 'Netlify', level: 80 },
+      { name: 'Render', level: 80 }
+    ]
+  },
+  {
+    category: 'Tools & Platforms',
+    icon: '🛠️',
+    skills: [
+      { name: 'Git & GitHub', level: 88 },
+      { name: 'Postman', level: 82 },
+      { name: 'Figma', level: 75 },
+      { name: 'VS Code & npm', level: 90 }
+    ]
+  },
+  {
+    category: 'AI & Automation',
+    icon: '🤖',
+    skills: [
+      { name: 'Gemini API', level: 80 },
+      { name: 'N8N Workflow Automation', level: 82 }
+    ]
+  }
 ];
 
-const techBadges = ['React.js','Node.js','Express.js','MongoDB','Supabase','JavaScript','TypeScript','C++','Java','HTML5','CSS3','Git','GitHub','Figma','N8N','REST API'];
+const techBadges = [
+  'JavaScript (ES6+)',
+  'TypeScript',
+  'C++',
+  'React.js',
+  'Next.js',
+  'Node.js',
+  'Tailwind CSS',
+  'HTML5',
+  'CSS3',
+  'MongoDB',
+  'Supabase',
+  'REST APIs',
+  'Express.js',
+  'Vercel',
+  'Netlify',
+  'Render',
+  'Postman',
+  'Figma',
+  'N8N',
+  'VS Code',
+  'npm',
+  'Git',
+  'GitHub',
+  'Gemini API',
+  'N8N Workflow Automation'
+];
 
 function SkillBar({ name, level, animate }) {
   return (
